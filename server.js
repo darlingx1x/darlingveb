@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import crypto from 'crypto';
+import helmet from 'helmet';
 import { db, initDb } from './src/db.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,6 +18,25 @@ const PORT = process.env.PORT || 3000;
 // Render proxy & cookies
 app.set('trust proxy', 1);
 
+// Helmet with custom CSP for Telegram widget
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://telegram.org"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: ["'self'", "https://telegram.org"],
+      fontSrc: ["'self'", "data:"],
+      objectSrc: ["'none'"],
+      mediaSrc: ["'self'"],
+      frameSrc: ["'self'", "https://telegram.org"],
+    },
+  },
+  crossOriginEmbedderPolicy: false,
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
+
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
@@ -26,11 +46,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'change_me',
   resave: false,
   saveUninitialized: false,
-  cookie: { 
-    httpOnly: true, 
-    sameSite: 'lax', 
-    secure: process.env.NODE_ENV === 'production' 
-  }
+  cookie: { httpOnly: true, sameSite: 'lax', secure: process.env.NODE_ENV === 'production' }
 }));
 
 // static
@@ -53,13 +69,13 @@ function verifyTelegramAuth(payload) {
   return calc === hash && isFresh;
 }
 
-function requireAuth(req, res, next) {
+function requireAuth(req, _res, next) {
   if (req.session?.user) return next();
   return next({ status: 401, message: 'Unauthorized' });
 }
 
 // routes
-app.get('/health', (req, res) => res.json({ ok: true }));
+app.get('/health', (_req, res) => res.json({ ok: true }));
 
 app.post('/api/auth/telegram', (req, res, next) => {
   try {
@@ -95,7 +111,7 @@ app.get('/api/me', (req, res) => {
   res.json({ user: req.session?.user || null });
 });
 
-app.get('/api/quotes', (req, res, next) => {
+app.get('/api/quotes', (_req, res, next) => {
   try {
     const rows = db.prepare('SELECT * FROM quotes ORDER BY createdAt DESC').all();
     res.json(rows);
@@ -159,12 +175,12 @@ app.post('/webhook', (req, res) => {
 });
 
 // fallback
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, _req, res, _next) => {
   const status = err.status || 500;
   res.status(status).json({ error: err.message || 'Server error' });
 });
