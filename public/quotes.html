@@ -1,167 +1,494 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quotes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quotes - Suleymanov Bobur">
+  <meta property="og:title" content="Quotes">
+  <meta property="og:description" content="Quotes - Suleymanov Bobur">
+  <meta property="og:url" content="https://www.darlingx.com/quotes">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="icon32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon180.png">
+  <title>Quotes | Suleymanov Bobur</title>
+
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/simple-posts.css">
+  <link rel="stylesheet" href="css/quotes-custom.css">
+
   <style>
-    body {
-      font-family: system-ui, Segoe UI, Roboto, Ubuntu, Helvetica, Arial, sans-serif;
-      max-width: 840px;
+    .quotes-container {
+      max-width: 800px;
       margin: 2rem auto;
-      padding: 0 1rem;
+      width: 100%;
     }
-    .row {
+    .quote-item {
+      margin-bottom: 2.5rem;
+      border-left: 3px solid #FFD700;
+      padding-left: 1.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .quote-text {
+      font-family: 'VT323', monospace;
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+    .quote-author {
+      font-family: 'VT323', monospace;
+      font-size: 1.2rem;
+      color: #FFD700;
+      text-align: right;
+    }
+    .quote-meta {
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 0.5rem;
+    }
+    .quote-actions {
+      margin-top: 1rem;
       display: flex;
-      gap: .5rem;
+      justify-content: space-between;
       align-items: center;
     }
-    .quote {
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      margin: .5rem 0;
-    }
-    button {
+    .delete-btn {
+      background: transparent;
+      border: 1px solid #FF4444;
+      color: #FF4444;
+      padding: 0.3rem 0.8rem;
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
-    #loginBox {
-      margin: 1rem 0;
+    .delete-btn:hover {
+      background: #FF4444;
+      color: #000;
     }
-    #formBox {
+    
+    /* Telegram Login Widget Styles */
+    .telegram-login-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #FFD700;
+      border-radius: 8px;
+      padding: 15px;
+      backdrop-filter: blur(10px);
+    }
+    .telegram-login-container h3 {
+      font-family: 'VT323', monospace;
+      color: #FFD700;
+      margin: 0 0 10px 0;
+      font-size: 1.1rem;
+    }
+    .telegram-login-container p {
+      font-family: 'VT323', monospace;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 10px 0;
+      font-size: 0.9rem;
+    }
+    
+    /* User Info Styles */
+    .user-info {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #FFD700;
+      border-radius: 8px;
+      padding: 15px;
+      backdrop-filter: blur(10px);
       display: none;
-      margin: 1rem 0;
+    }
+    .user-info h3 {
+      font-family: 'VT323', monospace;
+      color: #FFD700;
+      margin: 0 0 10px 0;
+      font-size: 1.1rem;
+    }
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #FFD700;
+    }
+    .user-details {
+      font-family: 'VT323', monospace;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .user-name {
+      font-size: 1rem;
+      color: #FFD700;
+    }
+    .user-username {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .logout-btn {
+      background: transparent;
+      border: 1px solid #FF4444;
+      color: #FF4444;
+      padding: 0.5rem 1rem;
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    .logout-btn:hover {
+      background: #FF4444;
+      color: #000;
+    }
+    
+    /* Add Quote Form */
+    .add-quote-form {
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #FFD700;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 2rem 0;
+      backdrop-filter: blur(10px);
+      display: none;
+    }
+    .add-quote-form h3 {
+      font-family: 'VT323', monospace;
+      color: #FFD700;
+      margin: 0 0 15px 0;
+      font-size: 1.2rem;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      font-family: 'VT323', monospace;
+      color: rgba(255, 255, 255, 0.8);
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid #FFD700;
+      border-radius: 4px;
+      color: #fff;
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .submit-btn {
+      background: transparent;
+      border: 1px solid #FFD700;
+      color: #FFD700;
+      padding: 10px 20px;
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .submit-btn:hover {
+      background: #FFD700;
+      color: #000;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .telegram-login-container,
+      .user-info {
+        position: static;
+        margin: 1rem 0;
+        backdrop-filter: none;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Community Quotes</h1>
-  <div id="loginBox">
-    <div id="tg-widget"></div>
-    <p>Login with Telegram to add your quotes.</p>
-  </div>
-  <div id="meBox" class="row" style="display:none"></div>
-  <div id="formBox">
-    <div class="row">
-      <input id="author" placeholder="Author (optional)" />
+  <div id="universe-container"></div>
+  <div class="custom-cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <main>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="nav-link"><span class="animate_letters">[darlingx.com]</span></a>
+        <a href="cv.html" class="nav-link"><span class="animate_letters">[cv]</span></a>
+        <a href="books.html" class="nav-link"><span class="animate_letters">[books]</span></a>
+        <a href="posts.html" class="nav-link"><span class="animate_letters">[posts]</span></a>
+        <a href="lists.html" class="nav-link"><span class="animate_letters">[lists]</span></a>
+        <a href="projects.html" class="nav-link"><span class="animate_letters">[projects]</span></a>
+      </nav>
+
+      <div class="about">
+        <h1 class="about-name"><span class="animate_letters">Community Quotes</span></h1>
+        <p class="about-description">Share your favorite quotes with the community</p>
+
+        <!-- Telegram Login Widget -->
+        <div id="telegramLoginContainer" class="telegram-login-container">
+          <h3>🔐 Login</h3>
+          <p>Login with Telegram to add quotes</p>
+          <div id="tg-widget"></div>
+        </div>
+
+        <!-- User Info -->
+        <div id="userInfoContainer" class="user-info">
+          <h3>👤 Profile</h3>
+          <div class="user-profile">
+            <img id="userAvatar" class="user-avatar" src="" alt="User Avatar">
+            <div class="user-details">
+              <div id="userName" class="user-name"></div>
+              <div id="userUsername" class="user-username"></div>
+            </div>
+          </div>
+          <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+
+        <!-- Add Quote Form -->
+        <div id="addQuoteForm" class="add-quote-form">
+          <h3>✍️ Add New Quote</h3>
+          <div class="form-group">
+            <label for="quoteText">Quote Text *</label>
+            <textarea id="quoteText" placeholder="Enter your quote here..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="quoteAuthor">Author (optional)</label>
+            <input type="text" id="quoteAuthor" placeholder="Author name">
+          </div>
+          <button id="submitQuoteBtn" class="submit-btn">Add Quote</button>
+        </div>
+
+        <div class="quotes-container">
+          <h2><span class="animate_letters">All Quotes</span></h2>
+          <div id="quotesList"></div>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <input id="text" placeholder="Your quote" style="flex:1" />
-      <button id="addBtn">Add</button>
-    </div>
-  </div>
-  <h2>All quotes</h2>
-  <div id="list"></div>
-  
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/three.min.js"></script>
+  <script src="js/matrix-animation.js"></script>
+  <script src="js/constellation.js"></script>
+  <script src="js/resource-loader.js"></script>
+  <script src="js/page-transition.js"></script>
+  <script src="js/quotes-custom.js"></script>
+  <script defer src="js/main.js"></script>
+
+  <!-- Telegram Login Script -->
   <script>
+    // Initialize Telegram Login Widget
     (function() {
-      const s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://telegram.org/js/telegram-widget.js?22';
-      s.setAttribute('data-telegram-login', 'darlinxloginbot');
-      s.setAttribute('data-size', 'large');
-      s.setAttribute('data-onauth', 'onTelegramAuth(user)');
-      s.setAttribute('data-request-access', 'write');
-      document.getElementById('tg-widget').appendChild(s);
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://telegram.org/js/telegram-widget.js?22';
+      script.setAttribute('data-telegram-login', 'darlinxloginbot');
+      script.setAttribute('data-size', 'large');
+      script.setAttribute('data-onauth', 'onTelegramAuth(user)');
+      script.setAttribute('data-request-access', 'write');
+      document.getElementById('tg-widget').appendChild(script);
     })();
-    
+
+    // Telegram Auth Handler
     async function onTelegramAuth(user) {
       try {
-        const r = await fetch('/api/auth/telegram', {
+        const response = await fetch('/api/auth/telegram', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(user)
         });
-        const j = await r.json();
-        if (!r.ok) throw new Error(j.error || 'Login failed');
-        await refreshMe();
-      } catch (e) {
-        alert(e.message);
-      }
-    }
-    
-    async function refreshMe() {
-      const r = await fetch('/api/me');
-      const { user } = await r.json();
-      const meBox = document.getElementById('meBox');
-      const loginBox = document.getElementById('loginBox');
-      const formBox = document.getElementById('formBox');
-      
-      if (user) {
-        loginBox.style.display = 'none';
-        meBox.style.display = 'flex';
-        formBox.style.display = 'block';
-        meBox.innerHTML = `
-          <img src="${user.photo_url || ''}" width="32" height="32" style="border-radius:50%"> 
-          <b>${user.username || user.name}</b> 
-          <button id="logoutBtn">Logout</button>
-        `;
-        document.getElementById('logoutBtn').onclick = async () => {
-          await fetch('/api/logout', { method: 'POST' });
-          location.reload();
-        };
-      } else {
-        loginBox.style.display = 'block';
-        meBox.style.display = 'none';
-        formBox.style.display = 'none';
-      }
-    }
-    
-    async function loadQuotes() {
-      const r = await fetch('/api/quotes');
-      const items = await r.json();
-      const list = document.getElementById('list');
-      list.innerHTML = '';
-      
-      items.forEach(q => {
-        const d = document.createElement('div');
-        d.className = 'quote';
-        const when = new Date(q.createdAt).toLocaleString();
-        d.innerHTML = `
-          <div><i>"${q.text}"</i>${q.author ? ` — ${q.author}` : ''}</div>
-          <div class='row' style='justify-content:space-between;'>
-            <small>by @${q.username || 'user'} · ${when}</small>
-            <button data-id='${q.id}'>Delete</button>
-          </div>
-        `;
-        d.querySelector('button').onclick = async () => {
-          try {
-            const r = await fetch('/api/quotes/' + q.id, { method: 'DELETE' });
-            if (!r.ok) {
-              const j = await r.json();
-              throw new Error(j.error || 'Cannot delete');
-            }
-            loadQuotes();
-          } catch (err) {
-            alert(err.message);
-          }
-        };
-        list.appendChild(d);
-      });
-    }
-    
-    document.getElementById('addBtn').onclick = async () => {
-      const text = document.getElementById('text').value.trim();
-      const author = document.getElementById('author').value.trim();
-      if (!text) return alert('Enter a quote');
-      
-      const r = await fetch('/api/quotes', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, author })
-      });
-      
-      if (r.ok) {
-        document.getElementById('text').value = '';
+        
+        const result = await response.json();
+        if (!response.ok) {
+          throw new Error(result.error || 'Login failed');
+        }
+        
+        await refreshUserInfo();
         loadQuotes();
-      } else {
-        const j = await r.json();
-        alert(j.error || 'Error');
+      } catch (error) {
+        alert('Login failed: ' + error.message);
+      }
+    }
+
+    // Refresh User Info
+    async function refreshUserInfo() {
+      try {
+        const response = await fetch('/api/me');
+        const { user } = await response.json();
+        
+        const loginContainer = document.getElementById('telegramLoginContainer');
+        const userContainer = document.getElementById('userInfoContainer');
+        const addForm = document.getElementById('addQuoteForm');
+        
+        if (user) {
+          // Hide login, show user info
+          loginContainer.style.display = 'none';
+          userContainer.style.display = 'block';
+          addForm.style.display = 'block';
+          
+          // Update user info
+          document.getElementById('userAvatar').src = user.photo_url || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="%23FFD700"/><text x="20" y="25" text-anchor="middle" fill="%23000" font-size="16" font-family="Arial">👤</text></svg>';
+          document.getElementById('userName').textContent = user.name || 'User';
+          document.getElementById('userUsername').textContent = user.username ? '@' + user.username : '';
+        } else {
+          // Show login, hide user info
+          loginContainer.style.display = 'block';
+          userContainer.style.display = 'none';
+          addForm.style.display = 'none';
+        }
+      } catch (error) {
+        console.error('Error refreshing user info:', error);
+      }
+    }
+
+    // Load Quotes
+    async function loadQuotes() {
+      try {
+        const response = await fetch('/api/quotes');
+        const quotes = await response.json();
+        
+        const quotesList = document.getElementById('quotesList');
+        quotesList.innerHTML = '';
+        
+        if (quotes.length === 0) {
+          quotesList.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.6); font-family: VT323, monospace;">No quotes yet. Be the first to add one!</p>';
+          return;
+        }
+        
+        quotes.forEach(quote => {
+          const quoteElement = document.createElement('div');
+          quoteElement.className = 'quote-item';
+          
+          const when = new Date(quote.createdAt).toLocaleString();
+          
+          quoteElement.innerHTML = `
+            <div class="quote-text">"${quote.text}"</div>
+            ${quote.author ? `<div class="quote-author">— ${quote.author}</div>` : ''}
+            <div class="quote-meta">by @${quote.username || 'user'} · ${when}</div>
+            <div class="quote-actions">
+              <div></div>
+              <button class="delete-btn" data-id="${quote.id}" style="display: none;">Delete</button>
+            </div>
+          `;
+          
+          // Show delete button only for user's own quotes
+          const deleteBtn = quoteElement.querySelector('.delete-btn');
+          if (deleteBtn) {
+            deleteBtn.onclick = async () => {
+              if (confirm('Are you sure you want to delete this quote?')) {
+                try {
+                  const deleteResponse = await fetch(`/api/quotes/${quote.id}`, {
+                    method: 'DELETE'
+                  });
+                  
+                  if (!deleteResponse.ok) {
+                    const error = await deleteResponse.json();
+                    throw new Error(error.error || 'Cannot delete quote');
+                  }
+                  
+                  loadQuotes();
+                } catch (error) {
+                  alert('Error deleting quote: ' + error.message);
+                }
+              }
+            };
+          }
+          
+          quotesList.appendChild(quoteElement);
+        });
+        
+        // Show delete buttons for user's quotes
+        showDeleteButtons();
+      } catch (error) {
+        console.error('Error loading quotes:', error);
+        document.getElementById('quotesList').innerHTML = '<p style="text-align: center; color: #FF4444; font-family: VT323, monospace;">Error loading quotes</p>';
+      }
+    }
+
+    // Show delete buttons for user's quotes
+    async function showDeleteButtons() {
+      try {
+        const response = await fetch('/api/me');
+        const { user } = await response.json();
+        
+        if (user) {
+          const deleteButtons = document.querySelectorAll('.delete-btn');
+          deleteButtons.forEach(btn => {
+            btn.style.display = 'inline-block';
+          });
+        }
+      } catch (error) {
+        console.error('Error checking user:', error);
+      }
+    }
+
+    // Add Quote Handler
+    document.getElementById('submitQuoteBtn').onclick = async () => {
+      const text = document.getElementById('quoteText').value.trim();
+      const author = document.getElementById('quoteAuthor').value.trim();
+      
+      if (!text) {
+        alert('Please enter a quote text');
+        return;
+      }
+      
+      try {
+        const response = await fetch('/api/quotes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, author })
+        });
+        
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Error adding quote');
+        }
+        
+        // Clear form
+        document.getElementById('quoteText').value = '';
+        document.getElementById('quoteAuthor').value = '';
+        
+        // Reload quotes
+        loadQuotes();
+        
+        alert('Quote added successfully!');
+      } catch (error) {
+        alert('Error adding quote: ' + error.message);
       }
     };
-    
-    refreshMe();
-    loadQuotes();
+
+    // Logout Handler
+    document.getElementById('logoutBtn').onclick = async () => {
+      try {
+        await fetch('/api/logout', { method: 'POST' });
+        location.reload();
+      } catch (error) {
+        alert('Error logging out: ' + error.message);
+      }
+    };
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      refreshUserInfo();
+      loadQuotes();
+    });
   </script>
 </body>
 </html> 
