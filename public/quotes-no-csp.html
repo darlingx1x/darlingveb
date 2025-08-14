@@ -3,11 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- CSP Meta tags to allow Telegram widget -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://telegram.org;">
-  
-  <title>Quotes - Simple Test</title>
+  <title>Quotes - No CSP Test</title>
   <style>
     body {
       font-family: 'VT323', monospace;
@@ -95,11 +91,23 @@
     .telegram-button:hover {
       background: #0077b3;
     }
+    .status {
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    .status.success { background: #4CAF50; color: white; }
+    .status.error { background: #f44336; color: white; }
+    .status.warning { background: #ff9800; color: white; }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Community Quotes</h1>
+    
+    <!-- Status Display -->
+    <div id="status" class="status warning">Initializing...</div>
     
     <!-- Telegram Login Widget -->
     <div id="telegramLoginContainer" class="telegram-login-container">
@@ -133,66 +141,76 @@
   </div>
 
   <script>
-    console.log('🔍 Starting simple quotes page...');
-    
-    // Method 1: Try to load Telegram widget script
-    function initTelegramWidget() {
-      console.log('🚀 Initializing Telegram widget...');
-      
-      const widgetContainer = document.getElementById('tg-widget');
-      if (!widgetContainer) {
-        console.error('❌ Widget container not found!');
-        return;
-      }
-      
-      console.log('✅ Widget container found, creating script...');
-      
-      // Clear container first
-      widgetContainer.innerHTML = '';
-      
-      // Create script element
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://telegram.org/js/telegram-widget.js?22';
-      script.setAttribute('data-telegram-login', 'darlinxloginbot');
-      script.setAttribute('data-size', 'large');
-      script.setAttribute('data-onauth', 'onTelegramAuth(user)');
-      script.setAttribute('data-request-access', 'write');
-      
-      // Add error handling
-      script.onerror = function() {
-        console.error('❌ Failed to load Telegram widget script');
-        console.log('🔄 Trying alternative method...');
-        initAlternativeWidget();
-      };
-      
-      script.onload = function() {
-        console.log('✅ Telegram widget script loaded successfully');
-      };
-      
-      widgetContainer.appendChild(script);
-      console.log('📝 Script element added to container');
-      
-      // Fallback: if script doesn't load within 3 seconds
-      setTimeout(() => {
-        if (widgetContainer.children.length === 0 || widgetContainer.innerHTML.includes('Failed to load')) {
-          console.log('⏰ Timeout - widget not loaded, using alternative');
-          initAlternativeWidget();
-        }
-      }, 3000);
+    // Status update function
+    function updateStatus(message, type = 'warning') {
+      const statusDiv = document.getElementById('status');
+      statusDiv.textContent = message;
+      statusDiv.className = `status ${type}`;
+      console.log(`[${type.toUpperCase()}] ${message}`);
     }
 
-    // Method 2: Alternative widget with direct link
-    function initAlternativeWidget() {
-      console.log('🔄 Creating alternative widget...');
+    console.log('🔍 Starting quotes page without CSP restrictions...');
+    updateStatus('Page loaded, initializing...', 'warning');
+    
+    // Method 1: Direct script injection
+    function initTelegramWidget() {
+      updateStatus('Loading Telegram widget...', 'warning');
       
       const widgetContainer = document.getElementById('tg-widget');
       if (!widgetContainer) {
-        console.error('❌ Widget container not found!');
+        updateStatus('Error: Widget container not found', 'error');
         return;
       }
       
-      // Create a direct link to Telegram login
+      // Clear container
+      widgetContainer.innerHTML = '';
+      
+      try {
+        // Create script element
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://telegram.org/js/telegram-widget.js?22';
+        script.setAttribute('data-telegram-login', 'darlinxloginbot');
+        script.setAttribute('data-size', 'large');
+        script.setAttribute('data-onauth', 'onTelegramAuth(user)');
+        script.setAttribute('data-request-access', 'write');
+        
+        script.onload = function() {
+          updateStatus('Telegram widget loaded successfully!', 'success');
+        };
+        
+        script.onerror = function() {
+          updateStatus('Failed to load Telegram widget, using alternative', 'error');
+          initAlternativeWidget();
+        };
+        
+        widgetContainer.appendChild(script);
+        updateStatus('Script element added, waiting for load...', 'warning');
+        
+        // Timeout fallback
+        setTimeout(() => {
+          if (widgetContainer.children.length === 0) {
+            updateStatus('Widget timeout, using alternative', 'warning');
+            initAlternativeWidget();
+          }
+        }, 5000);
+        
+      } catch (error) {
+        updateStatus('Error creating widget: ' + error.message, 'error');
+        initAlternativeWidget();
+      }
+    }
+
+    // Method 2: Alternative with direct link
+    function initAlternativeWidget() {
+      updateStatus('Creating alternative login method...', 'warning');
+      
+      const widgetContainer = document.getElementById('tg-widget');
+      if (!widgetContainer) {
+        updateStatus('Error: Widget container not found', 'error');
+        return;
+      }
+      
       widgetContainer.innerHTML = `
         <a href="https://oauth.telegram.org/auth?bot_id=8089091309&request_access=write&origin=${encodeURIComponent(window.location.origin)}" 
            class="telegram-button" 
@@ -200,18 +218,21 @@
            onclick="handleTelegramLogin(event)">
           🔐 Login with Telegram
         </a>
+        <p style="font-size: 0.8rem; margin-top: 8px; color: rgba(255,255,255,0.6);">
+          Opens in new tab
+        </p>
       `;
       
-      console.log('✅ Alternative widget created with direct link');
+      updateStatus('Alternative login method ready', 'success');
     }
 
-    // Method 3: Simple button for testing
+    // Method 3: Test button
     function initTestWidget() {
-      console.log('🧪 Creating test widget...');
+      updateStatus('Creating test login button...', 'warning');
       
       const widgetContainer = document.getElementById('tg-widget');
       if (!widgetContainer) {
-        console.error('❌ Widget container not found!');
+        updateStatus('Error: Widget container not found', 'error');
         return;
       }
       
@@ -219,47 +240,58 @@
         <button class="telegram-button" onclick="testTelegramAuth()">
           🔐 Login with Telegram (Test)
         </button>
+        <p style="font-size: 0.8rem; margin-top: 8px; color: rgba(255,255,255,0.6);">
+          Test mode - no real authentication
+        </p>
       `;
       
-      console.log('✅ Test widget created');
+      updateStatus('Test login button ready', 'success');
     }
 
-    // Handle Telegram login redirect
+    // Handle Telegram login
     function handleTelegramLogin(event) {
-      console.log('🔗 Opening Telegram login...');
-      // The link will open in new tab, user will be redirected back
+      updateStatus('Opening Telegram login...', 'warning');
+      console.log('🔗 Opening Telegram login in new tab');
     }
 
-    // Test function for development
+    // Test function
     function testTelegramAuth() {
-      console.log('🧪 Test auth function called');
-      alert('Telegram Login would work here in production!\n\nIn a real deployment, this would:\n1. Open Telegram login\n2. Authenticate user\n3. Redirect back with user data');
+      updateStatus('Test authentication triggered', 'success');
+      alert('🧪 Test Mode\n\nThis is a test button. In production, this would:\n\n1. Open Telegram login page\n2. Authenticate user with Telegram\n3. Return user data to the application\n4. Show user profile and allow adding quotes\n\nFor real authentication, you need:\n- A configured Telegram bot\n- Proper domain setup\n- Server-side API endpoints');
     }
 
     // Telegram Auth Handler
     function onTelegramAuth(user) {
+      updateStatus('Telegram authentication successful!', 'success');
       console.log('🎉 Telegram auth successful!', user);
-      alert('Login successful! User: ' + (user.first_name || 'Unknown'));
+      alert('✅ Login Successful!\n\nUser: ' + (user.first_name || 'Unknown') + '\nUsername: @' + (user.username || 'none') + '\n\nIn a real application, this would:\n- Save user session\n- Show user profile\n- Enable quote management');
     }
 
     // Initialize when page loads
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('📄 DOM loaded, initializing...');
+      updateStatus('DOM loaded, starting initialization...', 'warning');
       
-      // Try Method 1 first
+      // Try to load the real widget
       setTimeout(() => {
         initTelegramWidget();
       }, 1000);
     });
 
-    // Listen for messages from Telegram (if using popup)
+    // Listen for messages from Telegram
     window.addEventListener('message', function(event) {
       if (event.origin === 'https://oauth.telegram.org') {
         console.log('📨 Received message from Telegram:', event.data);
+        updateStatus('Received message from Telegram', 'success');
         if (event.data && event.data.user) {
           onTelegramAuth(event.data.user);
         }
       }
+    });
+
+    // Global error handler
+    window.addEventListener('error', function(event) {
+      console.error('Global error:', event.error);
+      updateStatus('JavaScript error occurred', 'error');
     });
   </script>
 </body>
