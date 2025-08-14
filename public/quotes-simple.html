@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotes - Simple Test</title>
+  <style>
+    body {
+      font-family: 'VT323', monospace;
+      background: #1a1a1a;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #FFD700;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    .telegram-login-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      padding: 15px;
+      min-width: 200px;
+    }
+    .telegram-login-container h3 {
+      color: #FFD700;
+      margin: 0 0 10px 0;
+      font-size: 1.1rem;
+    }
+    .telegram-login-container p {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 10px 0;
+      font-size: 0.9rem;
+    }
+    .quote-item {
+      margin-bottom: 2rem;
+      border-left: 3px solid #FFD700;
+      padding-left: 1.5rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      border-radius: 0 8px 8px 0;
+    }
+    .quote-text {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+    .quote-author {
+      font-size: 1rem;
+      color: #FFD700;
+      text-align: right;
+    }
+    .quote-meta {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 0.5rem;
+    }
+    .demo-notice {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 2rem;
+      padding: 1rem;
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Community Quotes</h1>
+    
+    <!-- Telegram Login Widget -->
+    <div id="telegramLoginContainer" class="telegram-login-container">
+      <h3>🔐 Login</h3>
+      <p>Login with Telegram to add quotes</p>
+      <div id="tg-widget"></div>
+    </div>
+
+    <!-- Demo Quotes -->
+    <div id="quotesList">
+      <div class="quote-item">
+        <div class="quote-text">"— If it entertains you now but will bore you someday, it's a distraction. Keep looking."</div>
+        <div class="quote-author">— Inkspirify</div>
+        <div class="quote-meta">by @demo · Demo quote</div>
+      </div>
+      <div class="quote-item">
+        <div class="quote-text">"— Your 20s are the perfect time to do a few things that are unusual, weird, bold, risky, unexplainable, crazy, unprofitable, and look nothing like "success." For the rest of your life these experiences will serve as your muse."</div>
+        <div class="quote-author">— Inkspirify</div>
+        <div class="quote-meta">by @demo · Demo quote</div>
+      </div>
+      <div class="quote-item">
+        <div class="quote-text">"— I don't have talent, so I just get up earlier."</div>
+        <div class="quote-author">— Inkspirify</div>
+        <div class="quote-meta">by @demo · Demo quote</div>
+      </div>
+    </div>
+    
+    <div class="demo-notice">
+      🔧 Demo mode - Login with Telegram to add real quotes!
+    </div>
+  </div>
+
+  <script>
+    console.log('🔍 Starting simple quotes page...');
+    
+    // Initialize Telegram Login Widget
+    function initTelegramWidget() {
+      console.log('🚀 Initializing Telegram widget...');
+      
+      const widgetContainer = document.getElementById('tg-widget');
+      if (!widgetContainer) {
+        console.error('❌ Widget container not found!');
+        return;
+      }
+      
+      console.log('✅ Widget container found, creating script...');
+      
+      // Clear container first
+      widgetContainer.innerHTML = '';
+      
+      // Create script element
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://telegram.org/js/telegram-widget.js?22';
+      script.setAttribute('data-telegram-login', 'darlinxloginbot');
+      script.setAttribute('data-size', 'large');
+      script.setAttribute('data-onauth', 'onTelegramAuth(user)');
+      script.setAttribute('data-request-access', 'write');
+      
+      // Add error handling
+      script.onerror = function() {
+        console.error('❌ Failed to load Telegram widget script');
+        widgetContainer.innerHTML = '<p style="color: #FF4444;">Failed to load Telegram widget</p>';
+      };
+      
+      script.onload = function() {
+        console.log('✅ Telegram widget script loaded successfully');
+      };
+      
+      widgetContainer.appendChild(script);
+      console.log('📝 Script element added to container');
+    }
+
+    // Alternative widget initialization
+    function initAlternativeWidget() {
+      console.log('🔄 Creating alternative widget...');
+      
+      const widgetContainer = document.getElementById('tg-widget');
+      if (!widgetContainer) {
+        console.error('❌ Widget container not found!');
+        return;
+      }
+      
+      // Create a simple button as fallback
+      widgetContainer.innerHTML = `
+        <div style="
+          background: #0088cc;
+          color: white;
+          padding: 12px 20px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-family: VT323, monospace;
+          font-size: 1rem;
+          text-align: center;
+          border: none;
+          display: inline-block;
+        " onclick="testTelegramAuth()">
+          🔐 Login with Telegram
+        </div>
+      `;
+      
+      console.log('✅ Alternative widget created');
+    }
+
+    // Test function for development
+    function testTelegramAuth() {
+      console.log('🧪 Test auth function called');
+      alert('Telegram Login would work here in production!');
+    }
+
+    // Telegram Auth Handler
+    function onTelegramAuth(user) {
+      console.log('🎉 Telegram auth successful!', user);
+      alert('Login successful! User: ' + (user.first_name || 'Unknown'));
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('📄 DOM loaded, initializing...');
+      
+      // Try to initialize the real widget
+      setTimeout(() => {
+        initTelegramWidget();
+        
+        // Check if widget loaded after 3 seconds
+        setTimeout(() => {
+          const widgetContainer = document.getElementById('tg-widget');
+          if (widgetContainer && widgetContainer.children.length === 0) {
+            console.log('⚠️ Real widget not loaded, creating alternative');
+            initAlternativeWidget();
+          }
+        }, 3000);
+      }, 1000);
+    });
+  </script>
+</body>
+</html> 

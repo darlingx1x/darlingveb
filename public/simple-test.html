@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Telegram Widget Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1a1a;
+      color: white;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #333;
+      padding: 30px;
+      border-radius: 10px;
+      border: 2px solid #FFD700;
+    }
+    h1 {
+      color: #FFD700;
+      text-align: center;
+    }
+    .widget-area {
+      text-align: center;
+      margin: 30px 0;
+      padding: 20px;
+      background: #222;
+      border-radius: 8px;
+      min-height: 100px;
+    }
+    .info {
+      background: #444;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 Telegram Login Widget Test</h1>
+    
+    <div class="info">
+      <strong>Test Info:</strong><br>
+      • Bot: darlinxloginbot<br>
+      • This is a simple test page<br>
+      • Check browser console for errors
+    </div>
+    
+    <div class="widget-area">
+      <h3>Telegram Login Widget</h3>
+      <div id="tg-widget"></div>
+      <p>If widget doesn't appear, check console (F12)</p>
+    </div>
+    
+    <div class="info">
+      <strong>Debug Steps:</strong><br>
+      1. Open browser console (F12)<br>
+      2. Look for any error messages<br>
+      3. Check if script loaded from telegram.org<br>
+      4. Verify bot name is correct
+    </div>
+  </div>
+
+  <script>
+    console.log('🔍 Starting Telegram widget test...');
+    
+    // Simple widget initialization
+    function initWidget() {
+      console.log('🚀 Initializing widget...');
+      
+      const container = document.getElementById('tg-widget');
+      if (!container) {
+        console.error('❌ Container not found!');
+        return;
+      }
+      
+      console.log('✅ Container found, creating script...');
+      
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://telegram.org/js/telegram-widget.js?22';
+      script.setAttribute('data-telegram-login', 'darlinxloginbot');
+      script.setAttribute('data-size', 'large');
+      script.setAttribute('data-onauth', 'onTelegramAuth(user)');
+      script.setAttribute('data-request-access', 'write');
+      
+      script.onload = function() {
+        console.log('✅ Script loaded successfully');
+      };
+      
+      script.onerror = function() {
+        console.error('❌ Script failed to load');
+        container.innerHTML = '<p style="color: #f44336;">Failed to load widget</p>';
+      };
+      
+      container.appendChild(script);
+      console.log('📝 Script added to container');
+    }
+    
+    // Auth handler
+    function onTelegramAuth(user) {
+      console.log('🎉 Auth successful!', user);
+      alert('Login successful! User: ' + (user.first_name || 'Unknown'));
+    }
+    
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('📄 DOM loaded, initializing...');
+      setTimeout(initWidget, 1000);
+    });
+  </script>
+</body>
+</html> 

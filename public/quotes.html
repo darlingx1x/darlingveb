@@ -220,6 +220,9 @@
       }
     }
   </style>
+  
+  <!-- Meta tag to allow Telegram widget -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://telegram.org; connect-src 'self' https://telegram.org;">
 </head>
 <body>
   <div id="universe-container"></div>
@@ -294,8 +297,27 @@
 
   <!-- Telegram Login Script -->
   <script>
+    // Debug function
+    function debugLog(message) {
+      console.log('🔍 DEBUG:', message);
+    }
+
     // Initialize Telegram Login Widget
-    (function() {
+    function initTelegramWidget() {
+      debugLog('Initializing Telegram widget...');
+      
+      const widgetContainer = document.getElementById('tg-widget');
+      if (!widgetContainer) {
+        debugLog('ERROR: tg-widget container not found!');
+        return;
+      }
+      
+      debugLog('Widget container found, creating script...');
+      
+      // Clear container first
+      widgetContainer.innerHTML = '';
+      
+      // Create script element
       const script = document.createElement('script');
       script.async = true;
       script.src = 'https://telegram.org/js/telegram-widget.js?22';
@@ -303,11 +325,61 @@
       script.setAttribute('data-size', 'large');
       script.setAttribute('data-onauth', 'onTelegramAuth(user)');
       script.setAttribute('data-request-access', 'write');
-      document.getElementById('tg-widget').appendChild(script);
-    })();
+      
+      // Add error handling
+      script.onerror = function() {
+        debugLog('ERROR: Failed to load Telegram widget script');
+        widgetContainer.innerHTML = '<p style="color: #FF4444; font-family: VT323, monospace;">Failed to load Telegram widget</p>';
+      };
+      
+      script.onload = function() {
+        debugLog('Telegram widget script loaded successfully');
+      };
+      
+      widgetContainer.appendChild(script);
+      debugLog('Script element added to container');
+    }
+
+    // Alternative widget initialization
+    function initAlternativeWidget() {
+      debugLog('Trying alternative widget initialization...');
+      
+      const widgetContainer = document.getElementById('tg-widget');
+      if (!widgetContainer) {
+        debugLog('ERROR: tg-widget container not found!');
+        return;
+      }
+      
+      // Create a simple button as fallback
+      widgetContainer.innerHTML = `
+        <div style="
+          background: #0088cc;
+          color: white;
+          padding: 12px 20px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-family: VT323, monospace;
+          font-size: 1rem;
+          text-align: center;
+          border: none;
+          display: inline-block;
+        " onclick="testTelegramAuth()">
+          🔐 Login with Telegram
+        </div>
+      `;
+      
+      debugLog('Alternative widget created');
+    }
+
+    // Test function for development
+    function testTelegramAuth() {
+      debugLog('Test auth function called');
+      alert('Telegram Login would work here in production!');
+    }
 
     // Telegram Auth Handler
     async function onTelegramAuth(user) {
+      debugLog('Telegram auth called with user:', user);
       try {
         const response = await fetch('/api/auth/telegram', {
           method: 'POST',
@@ -320,9 +392,11 @@
           throw new Error(result.error || 'Login failed');
         }
         
+        debugLog('Login successful');
         await refreshUserInfo();
         loadQuotes();
       } catch (error) {
+        debugLog('Login error:', error);
         alert('Login failed: ' + error.message);
       }
     }
@@ -331,6 +405,22 @@
     async function refreshUserInfo() {
       try {
         const response = await fetch('/api/me');
+        
+        // Check if response is ok
+        if (!response.ok) {
+          console.log('API not available, showing login widget');
+          showLoginWidget();
+          return;
+        }
+        
+        // Check if response is JSON
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          console.log('Response is not JSON, showing login widget');
+          showLoginWidget();
+          return;
+        }
+        
         const { user } = await response.json();
         
         const loginContainer = document.getElementById('telegramLoginContainer');
@@ -349,20 +439,53 @@
           document.getElementById('userUsername').textContent = user.username ? '@' + user.username : '';
         } else {
           // Show login, hide user info
-          loginContainer.style.display = 'block';
-          userContainer.style.display = 'none';
-          addForm.style.display = 'none';
+          showLoginWidget();
         }
       } catch (error) {
         console.error('Error refreshing user info:', error);
+        showLoginWidget();
       }
+    }
+
+    // Show login widget
+    function showLoginWidget() {
+      const loginContainer = document.getElementById('telegramLoginContainer');
+      const userContainer = document.getElementById('userInfoContainer');
+      const addForm = document.getElementById('addQuoteForm');
+      
+      loginContainer.style.display = 'block';
+      userContainer.style.display = 'none';
+      addForm.style.display = 'none';
     }
 
     // Load Quotes
     async function loadQuotes() {
       try {
         const response = await fetch('/api/quotes');
+        
+        // Check if response is ok
+        if (!response.ok) {
+          console.log('API not available, showing demo quotes');
+          showDemoQuotes();
+          return;
+        }
+        
+        // Check if response is JSON
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          console.log('Response is not JSON, showing demo quotes');
+          showDemoQuotes();
+          return;
+        }
+        
         const quotes = await response.json();
+        
+        // Check if quotes is an array
+        if (!Array.isArray(quotes)) {
+          console.log('Quotes is not an array, showing demo quotes');
+          showDemoQuotes();
+          return;
+        }
         
         const quotesList = document.getElementById('quotesList');
         quotesList.innerHTML = '';
@@ -418,8 +541,33 @@
         showDeleteButtons();
       } catch (error) {
         console.error('Error loading quotes:', error);
-        document.getElementById('quotesList').innerHTML = '<p style="text-align: center; color: #FF4444; font-family: VT323, monospace;">Error loading quotes</p>';
+        showDemoQuotes();
       }
+    }
+
+    // Show demo quotes when API is not available
+    function showDemoQuotes() {
+      const quotesList = document.getElementById('quotesList');
+      quotesList.innerHTML = `
+        <div class="quote-item">
+          <div class="quote-text">"— If it entertains you now but will bore you someday, it's a distraction. Keep looking."</div>
+          <div class="quote-author">— Inkspirify</div>
+          <div class="quote-meta">by @demo · Demo quote</div>
+        </div>
+        <div class="quote-item">
+          <div class="quote-text">"— Your 20s are the perfect time to do a few things that are unusual, weird, bold, risky, unexplainable, crazy, unprofitable, and look nothing like "success." For the rest of your life these experiences will serve as your muse."</div>
+          <div class="quote-author">— Inkspirify</div>
+          <div class="quote-meta">by @demo · Demo quote</div>
+        </div>
+        <div class="quote-item">
+          <div class="quote-text">"— I don't have talent, so I just get up earlier."</div>
+          <div class="quote-author">— Inkspirify</div>
+          <div class="quote-meta">by @demo · Demo quote</div>
+        </div>
+        <p style="text-align: center; color: rgba(255,255,255,0.6); font-family: VT323, monospace; margin-top: 2rem;">
+          🔧 Demo mode - API not available. Login with Telegram to add real quotes!
+        </p>
+      `;
     }
 
     // Show delete buttons for user's quotes
@@ -470,6 +618,7 @@
         
         alert('Quote added successfully!');
       } catch (error) {
+        console.error('Error adding quote:', error);
         alert('Error adding quote: ' + error.message);
       }
     };
@@ -486,6 +635,22 @@
 
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
+      debugLog('DOM loaded, initializing...');
+      
+      // Try to initialize Telegram widget
+      setTimeout(() => {
+        initTelegramWidget();
+        
+        // If widget doesn't appear after 3 seconds, use alternative
+        setTimeout(() => {
+          const widgetContainer = document.getElementById('tg-widget');
+          if (widgetContainer && widgetContainer.children.length === 0) {
+            debugLog('Widget not loaded, using alternative');
+            initAlternativeWidget();
+          }
+        }, 3000);
+      }, 1000);
+      
       refreshUserInfo();
       loadQuotes();
     });
