@@ -14,9 +14,7 @@
   <title>Quotes | Suleymanov Bobur</title>
 
   <link rel="stylesheet" href="css/fonts.css">
-
   <link rel="stylesheet" href="css/style.css">
-
   <link rel="stylesheet" href="css/simple-posts.css">
   <link rel="stylesheet" href="css/quotes-custom.css">
 
@@ -46,6 +44,85 @@
       color: #FFD700;
       text-align: right;
     }
+    
+    /* Telegram Login Widget Styles */
+    .telegram-login-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.95);
+      border: 2px solid #FFD700;
+      border-radius: 12px;
+      padding: 20px;
+      min-width: 250px;
+      backdrop-filter: blur(10px);
+    }
+    .telegram-login-container h3 {
+      color: #FFD700;
+      margin: 0 0 10px 0;
+      font-size: 1.2rem;
+      font-family: 'VT323', monospace;
+    }
+    .telegram-login-container p {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 15px 0;
+      font-size: 0.9rem;
+      font-family: 'VT323', monospace;
+    }
+    .telegram-button {
+      background: #0088cc;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+      text-align: center;
+      border: none;
+      display: inline-block;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .telegram-button:hover {
+      background: #0077b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
+    }
+    .telegram-button:active {
+      transform: translateY(0);
+    }
+    .status-indicator {
+      padding: 8px 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-family: 'VT323', monospace;
+      text-align: center;
+    }
+    .status-indicator.success { 
+      background: rgba(76, 175, 80, 0.2); 
+      color: #4CAF50; 
+      border: 1px solid #4CAF50;
+    }
+    .status-indicator.error { 
+      background: rgba(244, 67, 54, 0.2); 
+      color: #f44336; 
+      border: 1px solid #f44336;
+    }
+    .status-indicator.warning { 
+      background: rgba(255, 152, 0, 0.2); 
+      color: #ff9800; 
+      border: 1px solid #ff9800;
+    }
+    .status-indicator.info { 
+      background: rgba(33, 150, 243, 0.2); 
+      color: #2196F3; 
+      border: 1px solid #2196F3;
+    }
+    
     .modal-auth {
       display: none;
       position: fixed;
@@ -94,6 +171,17 @@
       margin-top: 1rem;
       color: red;
     }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .telegram-login-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 20px auto;
+        max-width: 400px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -124,37 +212,27 @@
           <div class="quote-item">
             <p class="quote-text">"— Your 20s are the perfect time to do a few things that are unusual, weird, bold, risky, unexplainable, crazy, unprofitable, and look nothing like "success." For the rest of your life these experiences will serve as your muse."</p>
             <p class="quote-author">— Inkspirify</p>
-        </div>
-        
-        <div class="quote-item">
+          </div>
+          <div class="quote-item">
             <p class="quote-text">"— I don't have talent, so I just get up earlier."</p>
             <p class="quote-author">— Inkspirify</p>
-        </div>
-        
-        <div class="quote-item">
+          </div>
+          <div class="quote-item">
             <p class="quote-text">"— You don't need more time because you already have all the time that you will ever get; you need more focus."</p>
             <p class="quote-author">— Inkspirify</p>
-        </div>
-        
-        <div class="quote-item">
+          </div>
+          <div class="quote-item">
             <p class="quote-text">"— A great way to understand yourself is to seriously reflect on everything you find irritating in others."</p>
             <p class="quote-author">— Inkspirify</p>
-        </div>
-
-        <div class="quote-item">
+          </div>
+          <div class="quote-item">
             <p class="quote-text">"— If you want to impress people nowadays, just say what you're gonna do, then do it."</p>
             <p class="quote-author">— Inkspirify</p>
-        </div>
-        
-        <div class="quote-item">
-            <p class="quote-text">"— A great way to understand yourself is to seriously reflect on everything you find irritating in others."</p>
-            <p class="quote-author">— Inkspirify</p>
-        </div>
-
-        <div class="quote-item">
+          </div>
+          <div class="quote-item">
             <p class="quote-text">"— You can quickly and easily be surrounded by people who share the same delusions. That doesn't make them true. Reality isn't a popularity contest. Surrounding yourself with people who tell you you're right doesn't mean you are."</p>
             <p class="quote-author">— Inkspirify</p>
-        </div>
+          </div>
         </div>
       </div>
     </div>
@@ -169,10 +247,21 @@
     </div>
   </main>
 
+  <!-- Telegram Login Widget -->
+  <div id="telegramLoginContainer" class="telegram-login-container">
+    <h3>🔐 Login with Telegram</h3>
+    <p>Login to add your own quotes</p>
+    
+    <!-- Status Indicator -->
+    <div id="statusIndicator" class="status-indicator info">Initializing...</div>
+    
+    <!-- Widget Container -->
+    <div id="tg-widget"></div>
+  </div>
+
   <!-- 🌌 Scripts -->
-          <script src="js/three.min.js"></script>
+  <script src="js/three.min.js"></script>
   <script src="js/matrix-animation.js"></script>
- 
   <script src="js/constellation.js"></script>
   <script src="js/resource-loader.js"></script>
   <script src="js/page-transition.js"></script>
@@ -278,6 +367,197 @@
     });
   </script>
 
-  
+  <!-- Telegram Widget Script -->
+  <script>
+    console.log('🚀 Starting Telegram widget integration...');
+    
+    // Status update function
+    function updateStatus(message, type = 'info') {
+      const statusDiv = document.getElementById('statusIndicator');
+      if (statusDiv) {
+        statusDiv.textContent = message;
+        statusDiv.className = `status-indicator ${type}`;
+      }
+      console.log(`[${type.toUpperCase()}] ${message}`);
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      updateStatus('Page loaded, initializing Telegram widget...', 'info');
+      
+      // Try to load Telegram widget
+      setTimeout(() => {
+        initTelegramWidget();
+      }, 1000);
+    });
+
+    // Method 1: Try to load real Telegram widget
+    function initTelegramWidget() {
+      updateStatus('Loading Telegram widget...', 'warning');
+      
+      const widgetContainer = document.getElementById('tg-widget');
+      if (!widgetContainer) {
+        updateStatus('Error: Widget container not found', 'error');
+        return;
+      }
+      
+      try {
+        // Create script element
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://telegram.org/js/telegram-widget.js?22';
+        script.setAttribute('data-telegram-login', 'darlinxloginbot');
+        script.setAttribute('data-size', 'large');
+        script.setAttribute('data-onauth', 'onTelegramAuth(user)');
+        script.setAttribute('data-request-access', 'write');
+        
+        script.onload = function() {
+          updateStatus('Telegram widget loaded successfully!', 'success');
+        };
+        
+        script.onerror = function() {
+          updateStatus('Widget failed to load, using alternative', 'error');
+          initAlternativeWidget();
+        };
+        
+        widgetContainer.appendChild(script);
+        updateStatus('Script element added, waiting for load...', 'warning');
+        
+        // Timeout fallback
+        setTimeout(() => {
+          if (widgetContainer.children.length === 0) {
+            updateStatus('Widget timeout, using alternative', 'warning');
+            initAlternativeWidget();
+          }
+        }, 5000);
+        
+      } catch (error) {
+        updateStatus('Error creating widget: ' + error.message, 'error');
+        initAlternativeWidget();
+      }
+    }
+
+    // Method 2: Alternative widget with direct link
+    function initAlternativeWidget() {
+      updateStatus('Creating alternative login method...', 'warning');
+      
+      const widgetContainer = document.getElementById('tg-widget');
+      if (!widgetContainer) {
+        updateStatus('Error: Widget container not found', 'error');
+        return;
+      }
+      
+      widgetContainer.innerHTML = `
+        <a href="https://oauth.telegram.org/auth?bot_id=8089091309&request_access=write&origin=${encodeURIComponent(window.location.origin)}" 
+           class="telegram-button" 
+           target="_blank"
+           onclick="handleTelegramLogin(event)">
+          🔐 Login with Telegram
+        </a>
+        <p style="font-size: 0.8rem; margin-top: 8px; color: rgba(255,255,255,0.6); text-align: center;">
+          Opens in new tab
+        </p>
+      `;
+      
+      updateStatus('Alternative login method ready', 'success');
+    }
+
+    // Method 3: Test button for development
+    function initTestWidget() {
+      updateStatus('Creating test login button...', 'warning');
+      
+      const widgetContainer = document.getElementById('tg-widget');
+      if (!widgetContainer) {
+        updateStatus('Error: Widget container not found', 'error');
+        return;
+      }
+      
+      widgetContainer.innerHTML = `
+        <button class="telegram-button" onclick="testTelegramAuth()">
+          🔐 Login with Telegram (Test)
+        </button>
+        <p style="font-size: 0.8rem; margin-top: 8px; color: rgba(255,255,255,0.6); text-align: center;">
+          Test mode - no real authentication
+        </p>
+      `;
+      
+      updateStatus('Test login button ready', 'success');
+    }
+
+    // Handle Telegram login
+    function handleTelegramLogin(event) {
+      updateStatus('Opening Telegram login...', 'info');
+      console.log('🔗 Opening Telegram login in new tab');
+    }
+
+    // Test function for development
+    function testTelegramAuth() {
+      updateStatus('Test authentication triggered', 'success');
+      
+      // Simulate successful login
+      setTimeout(() => {
+        onTelegramAuth({
+          id: 123456789,
+          first_name: 'Test',
+          last_name: 'User',
+          username: 'testuser',
+          photo_url: null,
+          auth_date: Math.floor(Date.now() / 1000),
+          hash: 'test_hash'
+        });
+      }, 1000);
+    }
+
+    // Telegram Auth Handler
+    function onTelegramAuth(user) {
+      updateStatus('Telegram authentication successful!', 'success');
+      console.log('🎉 Telegram auth successful!', user);
+      
+      // Show success message
+      const widgetContainer = document.getElementById('tg-widget');
+      if (widgetContainer) {
+        widgetContainer.innerHTML = `
+          <div style="text-align: center; color: #4CAF50;">
+            <div style="font-size: 2rem; margin-bottom: 10px;">✅</div>
+            <div style="font-weight: bold; margin-bottom: 5px;">Welcome, ${user.first_name || 'User'}!</div>
+            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+              @${user.username || 'user'}
+            </div>
+            <button class="telegram-button" onclick="logout()" style="margin-top: 15px; background: #f44336;">
+              Logout
+            </button>
+          </div>
+        `;
+      }
+      
+      // Show demo message
+      setTimeout(() => {
+        alert(`✅ Login Successful!\n\nUser: ${user.first_name || 'Unknown'}\nUsername: @${user.username || 'none'}\n\nIn a real application, this would:\n- Save user session\n- Show user profile\n- Enable quote management\n- Allow adding/deleting quotes`);
+      }, 500);
+    }
+
+    // Logout function
+    function logout() {
+      updateStatus('Logged out', 'info');
+      initTelegramWidget(); // Restart widget
+    }
+
+    // Listen for messages from Telegram
+    window.addEventListener('message', function(event) {
+      if (event.origin === 'https://oauth.telegram.org') {
+        console.log('📨 Received message from Telegram:', event.data);
+        updateStatus('Received message from Telegram', 'success');
+        if (event.data && event.data.user) {
+          onTelegramAuth(event.data.user);
+        }
+      }
+    });
+
+    // Global error handler
+    window.addEventListener('error', function(event) {
+      console.error('Global error:', event.error);
+      updateStatus('JavaScript error occurred', 'error');
+    });
+  </script>
 </body>
 </html>
