@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserved Subdomain | Suleymanov Bobur</title>
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="icon32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon180.png">
+  
+  <link rel="stylesheet" href="css/fonts.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+  
+  <link rel="stylesheet" href="css/subdomain.css">
+  
+  <style>
+    :root {
+      --primary-color: #FFD700;
+      --bg-color: #000;
+      --text-color: #fff;
+    }
+    
+    body {
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-main), 'VT323', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #universe-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.9;
+      min-height: 100vh;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+  </style>
+  
+  <script>
+    // Redirect after countdown with enhanced animation
+    document.addEventListener('DOMContentLoaded', function() {
+      let count = 6;
+      const countdownEl = document.getElementById('countdown');
+      
+      // Add initial animation
+      setTimeout(() => {
+        document.querySelector('.redirect-container').classList.add('active');
+      }, 300);
+      
+      const interval = setInterval(() => {
+        count--;
+        countdownEl.textContent = count;
+        
+        // Add pulse effect on count change
+        countdownEl.classList.add('pulse-strong');
+        setTimeout(() => {
+          countdownEl.classList.remove('pulse-strong');
+        }, 300);
+        
+        if (count <= 0) {
+          clearInterval(interval);
+          
+          // Fade out before redirect
+          document.querySelector('.redirect-container').style.opacity = '0';
+          document.querySelector('.redirect-container').style.transform = 'scale(0.95) translateY(10px)';
+          
+          setTimeout(() => {
+            window.location.href = "https://darlingx.com";
+          }, 800);
+        }
+      }, 1000);
+      
+      // Add interactive elements
+      const stars = document.querySelectorAll('.star');
+      stars.forEach(star => {
+        star.addEventListener('mouseover', () => {
+          star.style.transform = 'scale(1.5)';
+          star.style.boxShadow = '0 0 15px var(--primary-color)';
+        });
+        
+        star.addEventListener('mouseout', () => {
+          star.style.transform = 'scale(1)';
+          star.style.boxShadow = '0 0 5px var(--primary-color)';
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="universe-container" style="position: relative; z-index: 0;"></div>
+  <div class="custom-cursor"></div>
+  <div class="cursor-dot"></div>
+  
+  <div class="redirect-container">
+    <h1 class="premium-heading cyber-glitch" data-text="RESERVED SUBDOMAIN">RESERVED SUBDOMAIN</h1>
+    <p class="premium-text">This subdomain is part of the <span class="domain-name">darlingx.com</span> universe</p>
+    <p class="premium-text">Redirecting to <a href="https://darlingx.com" class="premium-link">darlingx.com</a> in</p>
+    <div class="countdown-container">
+      <div id="countdown" class="countdown">5</div>
+    </div>
+  </div>
+  
+  <script src="js/constellation.js"></script>
+  
+</body>
+</html>

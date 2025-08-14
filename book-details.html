@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book Details - Suleymanov Bobur">
+    <meta property="og:title" content="Book Details">
+    <meta property="og:description" content="Book Details - Suleymanov Bobur">
+    <meta property="og:url" content="https://www.darlingx.com/book-details">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="icon32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon180.png">
+    <title>Book Details | Suleymanov Bobur</title>
+    
+      <link rel="stylesheet" href="css/fonts.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+   
+    <link rel="stylesheet" href="css/book-details.css">
+    
+    <style>
+        #universe-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.9;
+            min-height: 100vh;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .back-link {
+            font-size: 25.8px; /* Увеличение на 20% от базового размера 24px */
+        }
+        
+        .book-description p {
+            font-size: 1.2em; /* Увеличение на 20% */
+        }
+
+        .book-details {
+            margin-top: 0.1rem; /* Уменьшение отступа на 20% от стандартного значения 2rem */
+        }
+    </style>
+</head>
+<body>
+    <div id="universe-container"></div>
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <main>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="nav-link">
+                    <span class="animate_letters">[darlingx.com]</span>
+                </a>
+                <a href="cv.html" class="nav-link">
+                    <span class="animate_letters">[cv]</span>
+                </a>
+                <a href="books.html" class="nav-link">
+                    <span class="animate_letters">[books]</span>
+                </a>
+                <a href="posts.html" class="nav-link">
+                    <span class="animate_letters">[posts]</span>
+                </a>
+                <a href="lists.html" class="nav-link">
+                    <span class="animate_letters">[lists]</span>
+                </a>
+                <a href="projects.html" class="nav-link">
+                    <span class="animate_letters">[projects]</span>
+                </a>
+            </nav>
+            
+            <div class="book-details">
+                <a href="books.html" class="back-link">← Back to Books</a>
+                
+                <div class="book-header">
+                    <img id="bookCover" class="book-cover" src="" alt="Book cover">
+                    <div class="book-info">
+                        <h1 id="bookTitle" class="book-title"></h1>
+                        <h2 id="bookAuthor" class="book-author"></h2>
+                        <p id="dateRead" class="date-read"></p>
+                    </div>
+                </div>
+                
+                <div class="book-description">
+                    <p id="bookDescription"></p>
+                </div>
+                
+                <div class="book-metadata">
+                    <div class="metadata-item">
+                        <span class="label">Pages:</span>
+                        <span id="pageCount"></span>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="label">Published:</span>
+                        <span id="publishDate"></span>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="label">Genre:</span>
+                        <span id="genre"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+            <script src="js/three.min.js"></script>
+  
+    <script src="js/matrix-animation.js"></script>
+    
+    <script src="js/constellation.js"></script>
+    <script src="js/page-transition.js"></script>
+    <script src="js/book-details.js"></script>
+    
+</body>
+</html>

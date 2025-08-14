@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quotes - Suleymanov Bobur">
+  <meta property="og:title" content="Quotes">
+  <meta property="og:description" content="Quotes - Suleymanov Bobur">
+  <meta property="og:url" content="https://www.darlingx.com/quotes">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="icon32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon180.png">
+  <title>Quotes | Suleymanov Bobur</title>
+
+  <link rel="stylesheet" href="css/fonts.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="css/simple-posts.css">
+  <link rel="stylesheet" href="css/quotes-custom.css">
+
+  <style>
+    .quotes-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      width: 100%;
+    }
+    .quote-item {
+      margin-bottom: 2.5rem;
+      border-left: 3px solid #FFD700;
+      padding-left: 1.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .quote-text {
+      font-family: 'VT323', monospace;
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+    .quote-author {
+      font-family: 'VT323', monospace;
+      font-size: 1.2rem;
+      color: #FFD700;
+      text-align: right;
+    }
+    .modal-auth {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-auth.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #111;
+      border: 1px solid #FFD700;
+      padding: 2rem;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      color: #FFD700;
+      font-family: 'VT323', monospace;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      background: #000;
+      border: 1px solid #FFD700;
+      color: #fff;
+    }
+    .modal-buttons button {
+      padding: 0.7rem 2rem;
+      margin: 0.5rem;
+      background: transparent;
+      border: 2px solid #FFD700;
+      color: #FFD700;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+    .modal-buttons button:hover {
+      background: #FFD700;
+      color: #000;
+    }
+    .auth-message {
+      margin-top: 1rem;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="universe-container"></div>
+  <div class="custom-cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <main>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="nav-link"><span class="animate_letters">[darlingx.com]</span></a>
+        <a href="cv.html" class="nav-link"><span class="animate_letters">[cv]</span></a>
+        <a href="books.html" class="nav-link"><span class="animate_letters">[books]</span></a>
+        <a href="posts.html" class="nav-link"><span class="animate_letters">[posts]</span></a>
+        <a href="lists.html" class="nav-link"><span class="animate_letters">[lists]</span></a>
+        <a href="projects.html" class="nav-link"><span class="animate_letters">[projects]</span></a>
+      </nav>
+
+      <div class="about">
+        <h1 class="about-name"><span class="animate_letters">Quotes</span></h1>
+
+        <div class="quotes-container">
+          <!-- Static quotes -->
+          <div class="quote-item">
+            <p class="quote-text">"— If it entertains you now but will bore you someday, it's a distraction. Keep looking."</p>
+            <p class="quote-author">— Inkspirify</p>
+          </div>
+          <div class="quote-item">
+            <p class="quote-text">"— Your 20s are the perfect time to do a few things that are unusual, weird, bold, risky, unexplainable, crazy, unprofitable, and look nothing like "success." For the rest of your life these experiences will serve as your muse."</p>
+            <p class="quote-author">— Inkspirify</p>
+        </div>
+        
+        <div class="quote-item">
+            <p class="quote-text">"— I don't have talent, so I just get up earlier."</p>
+            <p class="quote-author">— Inkspirify</p>
+        </div>
+        
+        <div class="quote-item">
+            <p class="quote-text">"— You don't need more time because you already have all the time that you will ever get; you need more focus."</p>
+            <p class="quote-author">— Inkspirify</p>
+        </div>
+        
+        <div class="quote-item">
+            <p class="quote-text">"— A great way to understand yourself is to seriously reflect on everything you find irritating in others."</p>
+            <p class="quote-author">— Inkspirify</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"— If you want to impress people nowadays, just say what you're gonna do, then do it."</p>
+            <p class="quote-author">— Inkspirify</p>
+        </div>
+        
+        <div class="quote-item">
+            <p class="quote-text">"— A great way to understand yourself is to seriously reflect on everything you find irritating in others."</p>
+            <p class="quote-author">— Inkspirify</p>
+        </div>
+
+        <div class="quote-item">
+            <p class="quote-text">"— You can quickly and easily be surrounded by people who share the same delusions. That doesn't make them true. Reality isn't a popularity contest. Surrounding yourself with people who tell you you're right doesn't mean you are."</p>
+            <p class="quote-author">— Inkspirify</p>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 👤 Login/Register Fallback for non-logged-in -->
+    <div id="auth-container">
+      <input type="text" id="auth-username" placeholder="Login">
+      <input type="password" id="auth-password" placeholder="Password">
+      <button id="loginBtn1">Log In</button>
+      <button id="registerBtn1">Sign Up</button>
+      <p id="auth-message"></p>
+    </div>
+  </main>
+
+  <!-- 🌌 Scripts -->
+          <script src="js/three.min.js"></script>
+  <script src="js/matrix-animation.js"></script>
+ 
+  <script src="js/constellation.js"></script>
+  <script src="js/resource-loader.js"></script>
+  <script src="js/page-transition.js"></script>
+  <script src="js/quotes-custom.js"></script>
+  <script defer src="js/main.js"></script>
+
+  <!-- ✅ Logged-in user bar -->
+  <script>
+    fetch('/api/user.php')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.logged_in) {
+          const userBar = document.createElement('div');
+          userBar.innerHTML = `👤 ${data.email} <a href="/api/logout.php" style="color:red;margin-left:10px;">[Logout]</a>`;
+          userBar.style.position = 'fixed';
+          userBar.style.top = '10px';
+          userBar.style.right = '20px';
+          userBar.style.color = '#FFD700';
+          userBar.style.fontFamily = 'VT323, monospace';
+          document.body.appendChild(userBar);
+        }
+      });
+  </script>
+
+  <!-- 🧾 Modal Auth Box -->
+  <div id="authModal" class="modal-auth">
+    <div class="modal-content">
+      <h2>👤 Authentication</h2>
+      <input type="email" id="authEmail" placeholder="Email" />
+      <input type="password" id="authPassword" placeholder="Password" />
+      <div class="modal-buttons">
+        <button id="loginBtn2">Log In</button>
+        <button id="registerBtn2">Sign Up</button>
+      </div>
+      <p class="auth-message" id="authMessage"></p>
+    </div>
+  </div>
+
+  <!-- 🔁 Login/Register Script -->
+  <script>
+    function closeModal() {
+      document.getElementById('authModal').classList.remove('active');
+    }
+
+    function login() {
+      const email = document.getElementById('authEmail').value.trim();
+      const password = document.getElementById('authPassword').value.trim();
+      const msg = document.getElementById('authMessage');
+
+      fetch('/admin/login.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          msg.textContent = '✅ Logged in';
+          closeModal();
+          location.reload();
+        } else {
+          msg.textContent = data.message || '❌ Login failed';
+        }
+      })
+      .catch(err => {
+        msg.textContent = 'Server error: ' + err.message;
+      });
+    }
+
+    function register() {
+      const email = document.getElementById('authEmail').value.trim();
+      const password = document.getElementById('authPassword').value.trim();
+      const msg = document.getElementById('authMessage');
+
+      fetch('/admin/register.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          msg.textContent = '✅ Registered. Redirecting...';
+          setTimeout(() => location.href = '/quotes.html', 1000);
+        } else {
+          msg.textContent = data.message || '❌ Registration failed';
+        }
+      })
+      .catch(err => {
+        msg.textContent = 'Server error: ' + err.message;
+      });
+    }
+
+    // Add event listeners for buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      // Login buttons
+      document.getElementById('loginBtn1')?.addEventListener('click', login);
+      document.getElementById('loginBtn2')?.addEventListener('click', login);
+      
+      // Register buttons
+      document.getElementById('registerBtn1')?.addEventListener('click', register);
+      document.getElementById('registerBtn2')?.addEventListener('click', register);
+    });
+  </script>
+
+  
+</body>
+</html>

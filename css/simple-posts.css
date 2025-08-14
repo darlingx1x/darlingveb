@@ -1,0 +1,415 @@
+/* 
+ * posts.css - Simplified version
+ */
+
+/* Posts grid */
+.posts-grid {
+    margin-top: 2.5rem;
+    width: 100%;
+}
+
+.post-card {
+    display: block;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateX(5px);
+}
+
+.post-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Large title for posts */
+.post-title {
+    font-family: 'VT323', monospace;
+    font-size: 2.5rem !important;
+    color: #FFD700;
+    margin: 0 0 0.7rem 0;
+    padding: 0;
+    font-weight: normal;
+    line-height: 1.1;
+    display: block;
+}
+
+/* Date on separate line */
+.post-date {
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem !important;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+/* Article pages */
+.article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.article-header {
+    margin-bottom: 2.5rem;
+}
+
+.article-title {
+    font-family: 'VT323', monospace;
+    font-size: 2.5rem !important;
+    color: #FFD700;
+    margin: 1rem 0 0.7rem 0;
+    font-weight: normal;
+    line-height: 1.1;
+}
+
+.article-date {
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem !important;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+}
+
+.article-content {
+    line-height: 1.8;
+    margin-bottom: 3rem;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.article-content ol {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.article-content li {
+    margin-bottom: 0.75rem;
+}
+
+.border-slate-500 {
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+.post-navigation {
+    margin: 3rem 0 1rem 0;
+}
+
+/* Animation */
+.post-card {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title, .article-title {
+        font-size: 2rem !important;
+    }
+    
+    .post-date, .article-date {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* Комплексные улучшения мобильной версии Open Questions */
+
+/* ===== Улучшение базовой отзывчивости и типографики ===== */
+
+/* Оптимизация контейнера статьи */
+.article-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Улучшение заголовка для мобильных устройств */
+.article-custom-title {
+    font-size: 60px !important;
+    line-height: 1.1 !important;
+    margin-top: 0.5rem !important;
+}
+
+/* Улучшение читабельности списка вопросов */
+.article-content ol {
+    padding-left: 1.25rem !important;
+}
+
+.article-content ol li {
+    margin-bottom: 1.5rem !important;
+    line-height: 1.4 !important;
+    font-size: 1.35rem !important;
+    background: rgba(10, 10, 10, 0.3);
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 3px solid rgba(255, 215, 0, 0.4);
+}
+
+/* ===== Улучшение дизайна кнопок и визуальной иерархии ===== */
+
+/* Улучшение оформления контейнера оракула */
+.oracle-container {
+    margin-top: 0.75rem;
+}
+
+/* Улучшение кнопки "Спросить Кибер-Оракула" */
+.ask-oracle-btn {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1.3rem;
+    border: 1px solid #30363D;
+    background: linear-gradient(to bottom, #121820, #0D1117);
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+}
+
+/* Улучшенный эффект свечения при наведении/фокусе */
+.ask-oracle-btn:hover, 
+.ask-oracle-btn:focus {
+    background: linear-gradient(to bottom, #1D232A, #161B22);
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Адаптация панели управления оракула */
+.oracle-control-panel {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.oracle-control-btn {
+    margin-bottom: 5px;
+    min-width: 80px;
+}
+
+/* Улучшение видимости префикса терминала */
+.terminal-prefix {
+    color: #5CFFAF;
+}
+
+/* ===== Улучшение дизайна терминального окна оракула ===== */
+
+/* Улучшение дизайна терминального окна */
+.terminal-window {
+    border-radius: 8px;
+    border: 1px solid #30363D;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(var(--glow-color), calc(var(--glow-intensity) * 0.6));
+    overflow: hidden;
+    transform-origin: center top;
+}
+
+/* Улучшаем внешний вид заголовка терминала */
+.terminal-header {
+    background: linear-gradient(to bottom, #1D232A, #161B22);
+    padding: 10px 15px;
+    border-bottom: 1px solid #30363D;
+}
+
+.terminal-title {
+    font-weight: normal;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+}
+
+/* Улучшаем точки в заголовке терминала */
+.terminal-dot {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    width: 10px;
+    height: 10px;
+}
+
+/* Улучшаем тело терминала */
+.terminal-body {
+    padding: 12px;
+    min-height: 100px;
+    background-color: #0D1117;
+}
+
+/* Стилизация выходных данных терминала */
+.terminal-output {
+    line-height: 1.5;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.terminal-content {
+    display: inline;
+    word-wrap: break-word;
+}
+
+/* Улучшение эффекта свечения для терминала */
+.terminal-glow {
+    box-shadow: 
+        0 0 15px rgba(var(--glow-color), var(--glow-intensity)), 
+        0 0 30px rgba(var(--glow-color), calc(var(--glow-intensity) * 0.6));
+}
+
+/* Улучшение стилей для различных типов категорий ответов */
+.terminal-body-quantum {
+    border-left: 3px solid #00BFFF;
+}
+
+.terminal-body-network {
+    border-left: 3px solid #50C878;
+}
+
+.terminal-body-metaphysical {
+    border-left: 3px solid #9370DB;
+}
+
+.terminal-body-systems {
+    border-left: 3px solid #FF4500;
+}
+
+/* Улучшение кнопки "Спросить снова" */
+.ask-again-btn {
+    border-radius: 4px;
+    border: 1px solid #30363D;
+    background: transparent;
+    color: #FFD700;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+    font-size: 1.2rem;
+}
+
+.ask-again-btn:hover {
+    background-color: rgba(255, 215, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: #FFD700;
+}
+
+/* ===== Медиа-запросы для различных размеров экранов ===== */
+
+/* Планшеты и средние устройства */
+@media (max-width: 768px) {
+    /* Адаптация заголовка */
+    .article-custom-title {
+        font-size: 50px !important;
+    }
+    
+    /* Адаптация даты */
+    .article-custom-date {
+        font-size: 22px !important;
+    }
+    
+    /* Оптимизация контейнера для вопросов */
+    .article-content ol li {
+        padding: 0.75rem;
+        font-size: 1.25rem !important;
+    }
+    
+    /* Адаптация кнопок */
+    .ask-oracle-btn {
+        padding: 12px 15px;
+    }
+    
+    /* Адаптация панели управления */
+    .oracle-control-panel {
+        gap: 5px;
+    }
+    
+    .oracle-storage-status {
+        width: 100%;
+        text-align: center;
+        margin-top: 5px;
+    }
+    
+    .terminal-window {
+        margin-top: 15px;
+    }
+    
+    .terminal-body {
+        padding: 10px;
+        font-size: 1.3rem;
+    }
+    
+    .terminal-header {
+        padding: 8px 12px;
+    }
+    
+    .terminal-dot {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Мобильные телефоны */
+@media (max-width: 480px) {
+    .article-custom-title {
+        font-size: 42px !important;
+    }
+    
+    .article-content ol {
+        padding-left: 1rem !important;
+    }
+    
+    .ask-oracle-btn {
+        font-size: 1.2rem;
+    }
+    
+    .oracle-control-btn {
+        padding: 6px 10px;
+        font-size: 1rem;
+    }
+    
+    .terminal-title {
+        font-size: 1rem;
+    }
+    
+    .terminal-body {
+        font-size: 1.2rem;
+        padding: 8px 10px;
+    }
+    
+    .terminal-actions button {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 320px) {
+    .article-custom-title {
+        font-size: 36px !important;
+    }
+    
+    .article-custom-date {
+        font-size: 18px !important;
+    }
+    
+    .article-content ol li {
+        font-size: 1.15rem !important;
+        padding: 0.6rem;
+    }
+    
+    .ask-oracle-btn {
+        font-size: 1.1rem;
+        padding: 8px 12px;
+    }
+}

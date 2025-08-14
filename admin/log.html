@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | DarlingX</title>
+  <link rel="stylesheet" href="../css/fonts.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    body {
+      background-color: #000;
+      color: #0ff;
+      font-family: 'VT323', monospace;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+    #universe-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.9;
+    }
+    .form-container {
+      max-width: 400px;
+      margin: 5rem auto;
+      background: rgba(0, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 10px;
+      border: 1px solid #0ff;
+      position: relative;
+      z-index: 1;
+    }
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      background: #111;
+      border: 1px solid #0ff;
+      color: #fff;
+      font-size: 1.1rem;
+    }
+    button {
+      padding: 0.8rem 2rem;
+      background: transparent;
+      color: #0ff;
+      border: 2px solid #0ff;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    button:hover {
+      background: #0ff;
+      color: #000;
+    }
+    .error-message {
+      color: #f55;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="universe-container"></div>
+  <div class="form-container">
+    <h1>🔐 Log In to Your Account</h1>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Log In</button>
+      <p class="error-message" id="errorMsg"></p>
+    </form>
+    <p style="margin-top: 1rem;">Don't have an account? <a href="/admin/register.html" style="color: #FFD700;">Sign Up</a></p>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorMsg = document.getElementById('errorMsg');
+
+      try {
+        const res = await fetch('/admin/login.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+        });
+
+        const data = await res.json();
+
+        if (data.status === 'success') {
+          window.location.href = '/quotes.html';
+        } else {
+          errorMsg.textContent = data.message || 'Incorrect email or password';
+        }
+      } catch (err) {
+        errorMsg.textContent = 'Server error. Please try again later.';
+      }
+    });
+  </script>
+
+  <!-- Three.js должен загрузиться первым -->
+          <script src="../js/three.min.js"></script>
+  
+  <!-- Звёздный фон последним -->
+  <script src="js/constellation.js"></script>
+</body>
+</html>

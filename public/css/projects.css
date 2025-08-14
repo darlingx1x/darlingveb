@@ -1,0 +1,45 @@
+/* 
+ * projects.css - Styling for projects page
+ */
+
+/* Projects grid */
+.projects-grid {
+    margin-top: 2.5rem;
+    width: 100%;
+}
+
+.project-item {
+    display: block;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateX(5px);
+}
+
+/* Project title styling */
+.project-title {
+    font-family: 'VT323', monospace;
+    font-size: 40px;
+    color: #FFD700;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Project date styling */
+.project-date {
+    font-family: 'VT323', monospace;
+    font-size: 26px;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+}
+
+/* Project content container */
+.projects-content {
+    margin-top: 3rem;
+}

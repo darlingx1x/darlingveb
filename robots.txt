@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://darlingx.com/sitemap.xml 

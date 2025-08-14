@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Posts - Suleymanov Bobur">
+  <meta property="og:title" content="Posts">
+  <meta property="og:description" content="Posts - Suleymanov Bobur">
+  <meta property="og:url" content="https://www.darlingx.com/posts.html">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="icon32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon180.png">
+  <title>Posts | Suleymanov Bobur</title>
+  
+  <!-- Подключение шрифтов -->
+  <link rel="stylesheet" href="css/fonts.css">
+  
+  <!-- Подключение CSS-файлов -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <link rel="stylesheet" href="css/posts.css">
+  
+  <!-- Унифицированный стиль для заголовков и дат -->
+  <style>
+    .list-title {
+      font-size: 2.5rem !important;
+      color: #FFD700;
+      margin: 0;
+      padding: 0;
+      font-weight: normal;
+      line-height: 1.1;
+      transition: transform 0.3s ease;
+    }
+    .list-title:hover {
+      transform: translateX(5px);
+    }
+    .list-date {
+      font-size: 1.4rem !important;
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+      padding: 0;
+    }
+    .lists-content {
+      margin-top: 2rem;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div id="universe-container"></div>
+  <div class="custom-cursor"></div>
+  <div class="cursor-dot"></div>
+  
+  <main>
+    <div class="container">
+      <!-- Навигация -->
+      <nav class="navbar">
+        <a href="index.html" class="nav-link"><span class="animate_letters">[darlingx.com]</span></a>
+        <a href="cv.html" class="nav-link"><span class="animate_letters">[cv]</span></a>
+        <a href="books.html" class="nav-link"><span class="animate_letters">[books]</span></a>
+        <a href="posts.html" class="nav-link active-link"><span class="animate_letters">[posts]</span></a>
+        <a href="lists.html" class="nav-link"><span class="animate_letters">[lists]</span></a>
+        <a href="projects.html" class="nav-link"><span class="animate_letters">[projects]</span></a>
+      </nav>
+      
+      <div class="about">
+        <h1 class="about-name"><span class="animate_letters">Posts</span></h1>
+        <div class="lists-content">
+          <!-- Кликабельный блок Open Questions -->
+          <div class="list-item" id="openQuestionsItem" style="cursor: pointer; margin-bottom: 1rem;">
+            <h1 class="list-title">Open Questions</h1>
+            <div class="list-date">March 10, 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <script src="js/matrix-animation.js"></script>
+  
+  
+  <!-- Three.js должен загрузиться первым -->
+          <script src="js/three.min.js"></script>
+  
+  <script src="js/resource-loader.js"></script>
+  <script src="js/page-transition.js"></script>
+  <script defer src="js/main.js"></script>
+  
+  <!-- Звёздный фон последним -->
+  <script src="js/constellation.js"></script>
+  
+  <!-- Скрипт для перенаправления по клику -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      var openQuestionsItem = document.getElementById('openQuestionsItem');
+      openQuestionsItem.addEventListener('click', function(){
+        window.location.href = 'open-questions.html';
+      });
+    });
+  </script>
+  
+  
+</body>
+</html>

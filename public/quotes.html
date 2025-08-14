@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quotes</title>
+  <style>
+    body {
+      font-family: system-ui, Segoe UI, Roboto, Ubuntu, Helvetica, Arial, sans-serif;
+      max-width: 840px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+    .quote {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      margin: .5rem 0;
+    }
+    button {
+      cursor: pointer;
+    }
+    #loginBox {
+      margin: 1rem 0;
+    }
+    #formBox {
+      display: none;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Community Quotes</h1>
+  <div id="loginBox">
+    <div id="tg-widget"></div>
+    <p>Login with Telegram to add your quotes.</p>
+  </div>
+  <div id="meBox" class="row" style="display:none"></div>
+  <div id="formBox">
+    <div class="row">
+      <input id="author" placeholder="Author (optional)" />
+    </div>
+    <div class="row">
+      <input id="text" placeholder="Your quote" style="flex:1" />
+      <button id="addBtn">Add</button>
+    </div>
+  </div>
+  <h2>All quotes</h2>
+  <div id="list"></div>
+  
+  <script>
+    (function() {
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://telegram.org/js/telegram-widget.js?22';
+      s.setAttribute('data-telegram-login', 'darlinxloginbot');
+      s.setAttribute('data-size', 'large');
+      s.setAttribute('data-onauth', 'onTelegramAuth(user)');
+      s.setAttribute('data-request-access', 'write');
+      document.getElementById('tg-widget').appendChild(s);
+    })();
+    
+    async function onTelegramAuth(user) {
+      try {
+        const r = await fetch('/api/auth/telegram', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(user)
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || 'Login failed');
+        await refreshMe();
+      } catch (e) {
+        alert(e.message);
+      }
+    }
+    
+    async function refreshMe() {
+      const r = await fetch('/api/me');
+      const { user } = await r.json();
+      const meBox = document.getElementById('meBox');
+      const loginBox = document.getElementById('loginBox');
+      const formBox = document.getElementById('formBox');
+      
+      if (user) {
+        loginBox.style.display = 'none';
+        meBox.style.display = 'flex';
+        formBox.style.display = 'block';
+        meBox.innerHTML = `
+          <img src="${user.photo_url || ''}" width="32" height="32" style="border-radius:50%"> 
+          <b>${user.username || user.name}</b> 
+          <button id="logoutBtn">Logout</button>
+        `;
+        document.getElementById('logoutBtn').onclick = async () => {
+          await fetch('/api/logout', { method: 'POST' });
+          location.reload();
+        };
+      } else {
+        loginBox.style.display = 'block';
+        meBox.style.display = 'none';
+        formBox.style.display = 'none';
+      }
+    }
+    
+    async function loadQuotes() {
+      const r = await fetch('/api/quotes');
+      const items = await r.json();
+      const list = document.getElementById('list');
+      list.innerHTML = '';
+      
+      items.forEach(q => {
+        const d = document.createElement('div');
+        d.className = 'quote';
+        const when = new Date(q.createdAt).toLocaleString();
+        d.innerHTML = `
+          <div><i>"${q.text}"</i>${q.author ? ` — ${q.author}` : ''}</div>
+          <div class='row' style='justify-content:space-between;'>
+            <small>by @${q.username || 'user'} · ${when}</small>
+            <button data-id='${q.id}'>Delete</button>
+          </div>
+        `;
+        d.querySelector('button').onclick = async () => {
+          try {
+            const r = await fetch('/api/quotes/' + q.id, { method: 'DELETE' });
+            if (!r.ok) {
+              const j = await r.json();
+              throw new Error(j.error || 'Cannot delete');
+            }
+            loadQuotes();
+          } catch (err) {
+            alert(err.message);
+          }
+        };
+        list.appendChild(d);
+      });
+    }
+    
+    document.getElementById('addBtn').onclick = async () => {
+      const text = document.getElementById('text').value.trim();
+      const author = document.getElementById('author').value.trim();
+      if (!text) return alert('Enter a quote');
+      
+      const r = await fetch('/api/quotes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, author })
+      });
+      
+      if (r.ok) {
+        document.getElementById('text').value = '';
+        loadQuotes();
+      } else {
+        const j = await r.json();
+        alert(j.error || 'Error');
+      }
+    };
+    
+    refreshMe();
+    loadQuotes();
+  </script>
+</body>
+</html> 

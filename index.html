@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="darlingx — suleymanov bobur">
+  <meta name="keywords" content="darlingx, cyber oracle, quotes, projects, philosophy, tech">
+  <meta name="author" content="Suleymanov Bobur">
+
+  <!-- 🔹 Open Graph (OG) Tags for social sharing -->
+  <meta property="og:title" content="darlingx — suleymanov bobur">
+  <meta property="og:description" content="Твой любимый">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://darlingx.com">
+  <meta property="og:image" content="https://darlingx.com/icon180.png">
+
+  <!-- 🔹 Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="darlingx — suleymanov bobur">
+  <meta name="twitter:description" content="Твой любимый">
+  <meta name="twitter:image" content="https://darlingx.com/icon180.png">
+
+  <!-- 🔹 PWA Manifest & Icons -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon180.png">
+
+  <!-- 🔹 Theme Color -->
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://www.darlingx.com">
+  <title>Suleymanov Bobur | Personal Universe</title>
+  
+  <link rel="stylesheet" href="css/fonts.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/books.css">
+  <link rel="preload" href="js/matrix-animation.js" as="script">
+  
+  <style>
+    :root {
+      --primary-color: #FFD700;
+      --bg-color: #000;
+      --text-color: #fff;
+    }
+    
+    #universe-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.9;
+      min-height: 100vh;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-color: var(--bg-color);
+      font-family: "VT323", monospace;
+    }
+    
+    .container {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+    }
+    
+    #profile-overlay {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 20;
+      color: var(--primary-color);
+      background: rgba(0,0,0,0.7);
+      padding: 2rem;
+      border-radius: 15px;
+      opacity: 0;
+      transition: opacity 0.5s;
+      max-width: 90%;
+      width: 400px;
+    }
+    
+    #profile-overlay.active { opacity: 1; }
+
+    /* Mobile responsive styles */
+    @media screen and (max-width: 768px) {
+      .attribution {
+        position: relative;
+        z-index: 15;
+        background: rgba(0,0,0,0.7);
+        padding: 5px;
+        border-radius: 5px;
+        margin-top: 2rem;
+      }
+      .socials {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+        z-index: 10;
+      }
+      .socials a { margin: 0.5rem; }
+    }
+    @media screen and (max-width: 480px) {
+      /* Mobile styles preserved */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="universe-container"></div>
+  
+  <div id="profile-overlay">
+    <h1>Suleymanov Bobur</h1>
+    <p>AI | Explorer of Digital Realities</p>
+  </div>
+
+  <div class="custom-cursor"></div>
+  <div class="cursor-dot"></div>
+  
+  <main>
+    <div class="container">
+      <!--═══ NAVBAR ═══-->
+      <nav class="navbar">
+        <a href="index.html"  class="nav-link active-link"><span class="animate_letters">[darlingx.com]</span></a>
+        <a href="cv.html"     class="nav-link"><span class="animate_letters">[cv]</span></a>
+        <a href="books.html"  class="nav-link"><span class="animate_letters">[books]</span></a>
+        <a href="posts.html"  class="nav-link"><span class="animate_letters">[posts]</span></a>
+        <a href="lists.html"  class="nav-link"><span class="animate_letters">[lists]</span></a>
+        <a href="projects.html" class="nav-link"><span class="animate_letters">[projects]</span></a>
+      </nav>
+      
+      <!--═══ ABOUT ═══-->
+      <div class="about">
+        <h1 class="about-name"><span class="animate_letters">Suleymanov Bobur</span></h1>
+        
+        <h3 class="about-location">
+          <a href="https://www.google.com/maps/place/Uzbekistan" target="_blank">
+            <span class="animate_letters location-text">📍Currently in: Tashkent, UZB</span>
+          </a>
+        </h3>
+        
+        <div class="about-content">
+          <img class="about-image" src="darling.webp" alt="Profile Image">
+          <div class="about-text">
+            <p>Hello everyone! Not an NPC!</p>
+            <p>I am Suleymanov Bobur, originating from the lively city of Ferghana in Uzbekistan.</p>
+            <p>A passion for learning first sparked through physics, mathematics, and computer science.</p>
+            <p>I'm driven to create the new, unite others around a shared purpose, and guide those seeking their path.</p>
+            <p>On this website, you'll find information about what I do, what I'm reading, and my thoughts and ideas. If our interests align, feel free to reach out—I'm always open to connecting and expanding my network.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!--═══ SOCIALS ═══-->
+      <nav class="socials">
+        <a href="my-time.html"              class="nav-link"><span class="animate_letters">[my time]</span></a>
+        <a href="https://t.me/quintessenceofdarling" target="_blank" class="nav-link"><span class="animate_letters">[x]</span></a>
+        <a href="https://t.me/senpaisenpai"          target="_blank" class="nav-link"><span class="animate_letters">[telegram]</span></a>
+        <a href="https://instagram.com/suleimanv_"   target="_blank" class="nav-link"><span class="animate_letters">[instagram]</span></a>
+        <a href="https://github.com/darlingx1x"      target="_blank" class="nav-link"><span class="animate_letters">[github]</span></a>
+      </nav>
+      
+      <p class="attribution">
+        *design inspired by <a href="https://www.yulbarsov.uz/" target="_blank"><span class="animate_letters">ky.org</span></a>
+      </p>
+    </div>
+    
+  </main>
+
+  <!--═══ LIBS ═══-->
+          <script src="js/three.min.js"></script>
+        <script src="js/gsap.min.js"></script>
+  <!-- Оригинальные JS-файлы -->
+
+  <script src="js/matrix-animation.js"></script>
+  <script src="js/constellation.js"></script>
+  <script src="js/page-transition.js"></script>
+  <script defer src="js/main.js"></script>
+
+  
+  <!--═══ SERVICE WORKER ═══-->
+  <script>
+    if('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(r => console.log('✅ Service Worker registered:', r.scope))
+          .catch(e => console.error('❌ Service Worker registration failed:', e));
+      });
+    }
+  </script>
+</body>
+</html>

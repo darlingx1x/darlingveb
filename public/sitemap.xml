@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <url>
+        <loc>https://darlingx.com/</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/darling.webp</image:loc>
+            <image:title>DarlingX - Главная страница</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://darlingx.com/projects.html</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/darling.webp</image:loc>
+            <image:title>Проекты DarlingX</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://darlingx.com/books.html</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/book48.webp</image:loc>
+            <image:title>Книги DarlingX</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://darlingx.com/posts.html</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/darling.webp</image:loc>
+            <image:title>Посты DarlingX</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://darlingx.com/lists.html</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/darling.webp</image:loc>
+            <image:title>Списки DarlingX</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://darlingx.com/my-time.html</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/darling.webp</image:loc>
+            <image:title>Мое время DarlingX</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://darlingx.com/quotes.html</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/darling.webp</image:loc>
+            <image:title>Цитаты DarlingX</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://darlingx.com/cv.html</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/darling.webp</image:loc>
+            <image:title>Резюме DarlingX</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://darlingx.com/open-questions.html</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/darling.webp</image:loc>
+            <image:title>Открытые вопросы DarlingX</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://darlingx.com/project-detail.html</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/darling.webp</image:loc>
+            <image:title>Детали проекта DarlingX</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://darlingx.com/book-details.html</loc>
+        <lastmod>2024-04-26T08:30:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://darlingx.com/book48.webp</image:loc>
+            <image:title>Детали книги DarlingX</image:title>
+        </image:image>
+    </url>
+</urlset> 

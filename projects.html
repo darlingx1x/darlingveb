@@ -1,0 +1,289 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Suleymanov Bobur</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+      body, html {
+        margin: 0;
+        font-family: 'VT323', monospace;
+        background: #000;
+        color: #FFD700;
+      }
+      .project-item {
+        cursor: pointer;
+        margin-bottom: 1rem;
+      }
+      .list-title {
+        font-size: 2.5rem;
+        color: #FFD700;
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+        line-height: 1.1;
+        transition: transform 0.3s ease;
+      }
+      .list-title:hover {
+        transform: translateX(5px);
+      }
+      .list-date {
+        font-size: 1.4rem;
+        color: rgba(255,255,255,0.7);
+        margin: 0;
+        padding: 0;
+      }
+      .lists-content {
+        margin-top: 2rem;
+        text-align: left;
+      }
+  
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(30, 20, 5, 0.35);
+        backdrop-filter: blur(16px) brightness(0.9) saturate(120%);
+        -webkit-backdrop-filter: blur(16px) brightness(0.9) saturate(120%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+      .modal-content {
+        background: #111;
+        border: 2px solid #FFD700;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        width: 90vw;
+        max-width: 400px;
+        animation: pulse 2s infinite;
+      }
+      .modal-content input {
+        width: 100%;
+        padding: 0.7rem;
+        background: #000;
+        border: 1px solid #FFD700;
+        color: #FFD700;
+        font-size: 1.4rem;
+        letter-spacing: 0.2em;
+        text-align: center;
+        animation: typing 1s steps(5,end) infinite;
+      }
+      .modal-content button {
+        background: transparent;
+        color: #FFD700;
+        border: 1px solid #FFD700;
+        margin: 1rem 0.5rem 0;
+        padding: 0.5rem 1.2rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .modal-content button:hover {
+        background: #FFD700;
+        color: #000;
+      }
+      .feedback {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        display: none;
+      }
+      .access-granted {
+        color: #00ff66;
+      }
+      .access-denied {
+        color: #ff5050;
+      }
+      .shake {
+        animation: shake 0.3s ease-in-out;
+      }
+      @keyframes pulse {
+        0%,100% { box-shadow: 0 0 10px rgba(255,215,0,0.2); }
+        50% { box-shadow: 0 0 30px rgba(255,215,0,0.4); }
+      }
+      @keyframes typing {
+        0%,100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+      @keyframes shake {
+        0%,100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        50% { transform: translateX(5px); }
+      }
+      .dg.ac {
+        position: fixed !important;
+        bottom: 10px !important;
+        right: 10px !important;
+        z-index: 9999 !important;
+        opacity: 0.3;
+        transition: opacity 0.5s ease-in-out;
+        max-height: 80vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        transform: translateZ(0);
+        will-change: transform;
+        pointer-events: auto;
+        display: none;
+      }
+      
+      .dg.ac.visible {
+        display: block;
+      }
+      
+      .dg.main {
+        position: static !important;
+        margin: 0 !important;
+        top: auto !important;
+        right: auto !important;
+        left: auto !important;
+        bottom: auto !important;
+        max-height: 100% !important;
+        overflow: visible !important;
+        transform: translateZ(0) !important;
+        will-change: transform !important;
+        pointer-events: auto !important;
+        background: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        backdrop-filter: blur(0px) !important;
+      }
+
+      .gui-toggle-btn {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        z-index: 10000;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid #FFD700;
+        color: #FFD700;
+        padding: 5px 10px;
+        cursor: pointer;
+        opacity: 0.3;
+        transition: opacity 0.3s ease;
+      }
+
+      .gui-toggle-btn:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="universe-container"></div>
+    <main>
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="nav-link">[darlingx.com]</a>
+          <a href="cv.html" class="nav-link">[cv]</a>
+          <a href="books.html" class="nav-link">[books]</a>
+          <a href="posts.html" class="nav-link">[posts]</a>
+          <a href="lists.html" class="nav-link">[lists]</a>
+          <a href="projects.html" class="nav-link active-link">[projects]</a>
+        </nav>
+        <div class="about">
+          <h1 class="about-name" style="margin-bottom:3rem;"><span class="animate_letters">Projects</span></h1>
+          <div class="lists-content">
+            <div class="project-item"><h2 class="list-title">A New Era is coming!</h2><div class="list-date">May 16, 2025</div></div>
+            <div class="project-item"><h2 class="list-title">How I Earned 100 Million UZS in 4 Weeks with a Simple Idea</h2><div class="list-date">January 14, 2025</div></div>
+            <div class="project-item"><h2 class="list-title">It's the second year of my AI service — how profitable is it?</h2><div class="list-date">April 9, 2023</div></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  
+    <!-- Modal -->
+    <div id="modal" class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+        <p>ACCESS TERMINAL // ENTER PASSCODE</p>
+        <input type="password" id="code" autocomplete="off" class="">
+        <div>
+          <button id="backBtn">← Back</button>
+          <button id="submitBtn">OK</button>
+        </div>
+        <div id="accessMsg" class="feedback access-granted" style="display: none;">ACCESS GRANTED</div>
+        <div id="errorMsg" class="feedback access-denied" style="display: none;">ACCESS DENIED</div>
+      </div>
+    </div>
+  
+    <script>
+      const modal = document.getElementById('modal');
+      const codeInput = document.getElementById('code');
+      const accessMsg = document.getElementById('accessMsg');
+      const errorMsg = document.getElementById('errorMsg');
+      let selectedProject = null;
+      let audioCtx;
+  
+      document.querySelectorAll('.project-item').forEach(item => {
+        item.addEventListener('click', () => {
+          selectedProject = {
+            title: item.querySelector('.list-title').innerText.trim(),
+            date: item.querySelector('.list-date').innerText.trim()
+          };
+          modal.style.display = 'flex';
+          codeInput.focus();
+        });
+      });
+  
+      document.getElementById('submitBtn').onclick = () => {
+        const val = codeInput.value.trim();
+        if (val === 'please!') {
+          errorMsg.style.display = 'none';
+          accessMsg.style.display = 'block';
+          playSound('success');
+          setTimeout(() => {
+            const data = btoa(JSON.stringify(selectedProject));
+            window.location.href = `project-detail.html?code=${data}`;
+          }, 1000);
+        } else {
+          codeInput.classList.add('shake');
+          errorMsg.innerText = 'ACCESS DENIED';
+          errorMsg.style.display = 'block';
+          playSound('error');
+          setTimeout(() => {
+            codeInput.classList.remove('shake');
+            errorMsg.style.display = 'none';
+          }, 1500);
+        }
+        codeInput.value = '';
+      };
+  
+      document.getElementById('backBtn').onclick = () => {
+        modal.style.display = 'none';
+        accessMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+      };
+  
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') modal.style.display = 'none';
+      });
+  
+      function playSound(type) {
+        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type === 'error' ? 'triangle' : 'sine';
+        osc.frequency.value = type === 'error' ? 220 : 440 + Math.random() * 30;
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(); osc.stop(audioCtx.currentTime + (type === 'error' ? 0.6 : 0.25));
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (type === 'error' ? 0.6 : 0.25));
+      }
+    </script>
+  
+    <script src="js/matrix-animation.js"></script>
+    
+    
+    <!-- Three.js должен загрузиться первым -->
+            <script src="js/three.min.js"></script>
+
+    
+    <script src="js/resource-loader.js"></script>
+    <script src="js/page-transition.js"></script>
+    <script defer src="js/main.js"></script>
+    
+    <!-- Звёздный фон последним -->
+    <script src="js/constellation.js"></script>
+    
+
+  </body></html>

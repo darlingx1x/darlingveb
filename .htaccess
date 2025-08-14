@@ -1,0 +1,131 @@
+# ─────────────────────────────
+# 🔁 Поддомены и редиректы
+# ─────────────────────────────
+RewriteEngine On
+
+# 🔐 Исключение для AutoSSL
+RewriteCond %{REQUEST_URI} ^/\.well-known/acme-challenge/
+RewriteRule ^ - [L]
+
+# 🌌 Заглушка для системных поддоменов
+RewriteCond %{HTTP_HOST} ^(cpanel|webmail|webdisk|cpcontacts|cpcalendars)\.darlingx\.com$ [NC]
+RewriteRule ^(.*)$ /subdomain-landing.html [L]
+
+# 🌐 Редирект www → основной домен
+RewriteCond %{HTTP_HOST} ^www\.darlingx\.com$ [NC]
+RewriteRule ^(.*)$ https://darlingx.com/$1 [L,R=301]
+
+# 🔒 Редирект HTTP → HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ─────────────────────────────
+# 📦 Чистые маршруты и страницы
+# ─────────────────────────────
+
+# Явное разрешение статических файлов
+RewriteCond %{REQUEST_URI} \.(css|js|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf|eot)$ [NC]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Явное разрешение .html файлов, если они существуют
+RewriteCond %{REQUEST_URI} \.html$ [NC]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Clean URL → HTML (читаемые маршруты)
+RewriteRule ^books/?$ books.html [L]
+RewriteRule ^book-details/?$ book-details.html [L]
+RewriteRule ^posts/?$ posts.html [L]
+RewriteRule ^projects/?$ projects.html [L]
+RewriteRule ^lists/?$ lists.html [L]
+RewriteRule ^cv/?$ cv.html [L]
+RewriteRule ^open-questions/?$ open-questions.html [L]
+RewriteRule ^quotes/?$ quotes.html [L]
+RewriteRule ^project-detail/?$ project-detail.html [L]
+RewriteRule ^my-time/?$ my-time.html [L]
+RewriteRule ^offline/?$ offline.html [L]
+RewriteRule ^register/?$ register.html [L]
+
+# 🔐 Поддержка /admin/ без перехвата
+RewriteCond %{REQUEST_URI} ^/admin/
+RewriteRule ^ - [L]
+
+# 🔧 Поддержка /api/ без перехвата
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^ - [L]
+
+# 🌐 SPA fallback — если НЕ файл и НЕ директория
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]
+
+# ─────────────────────────────
+# 📎 Поддержка query параметров (?id=...)
+# ─────────────────────────────
+RewriteCond %{QUERY_STRING} ^id=([^&]+)$
+RewriteRule ^book-details\.html$ book-details.html [L]
+
+# ─────────────────────────────
+# 📦 MIME-типы
+# ─────────────────────────────
+AddType text/css .css
+AddType application/javascript .js
+AddType image/webp .webp
+AddType image/svg+xml .svg
+AddType font/ttf .ttf
+AddType font/eot .eot
+AddType font/woff .woff
+AddType font/woff2 .woff2
+
+# ─────────────────────────────
+# 🛡 Заголовки безопасности
+# ─────────────────────────────
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header always set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# ─────────────────────────────
+# 🗂 Кэширование
+# ─────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# ─────────────────────────────
+# 🚫 Запрет листинга директорий
+# ─────────────────────────────
+Options -Indexes
+
+# ─────────────────────────────
+# 💥 Кастомная страница 404
+# ─────────────────────────────
+ErrorDocument 404 /404.html
+
+# ─────────────────────────────
+# ⚡ Сжатие (gzip)
+# ─────────────────────────────
+<IfModule mod_deflate.c>
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml image/svg+xml
+    </IfModule>
+</IfModule>
+
+# ─────────────────────────────
+# 🔓 Разрешение доступа ко всем файлам
+# ─────────────────────────────
+<FilesMatch ".*">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>

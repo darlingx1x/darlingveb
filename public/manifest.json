@@ -1,0 +1,29 @@
+{
+    "name": "Suleymanov Bobur",
+    "short_name": "darlingx",
+    "description": "Твой любимый",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "/icon32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      },
+      {
+        "src": "/icon180.png",
+        "sizes": "180x180",
+        "type": "image/png"
+      },
+      {
+        "src": "/darling.webp",
+        "sizes": "512x512",
+        "type": "image/webp",
+        "purpose": "maskable any"
+      }
+    ]
+  }
+  

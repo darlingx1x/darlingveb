@@ -1,0 +1,256 @@
+<html lang="en"><!-- 🔹 META + Open Graph Tags for darlingx.com --><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DarlingX — a premium constellation of tools, questions, and realities.">
+  <meta name="keywords" content="darlingx, cyber oracle, quotes, projects, philosophy, tech">
+  <meta name="author" content="Suleymanov Bobur">
+
+  <!-- 🔹 Open Graph (OG) Tags for social sharing -->
+  <meta property="og:title" content="DarlingX — Cyber Oracle Platform">
+  <meta property="og:description" content="A premium constellation of tools, questions, and realities.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://darlingx.com">
+  <meta property="og:image" content="https://darlingx.com/icon180.png">
+
+  <!-- 🔹 Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DarlingX — Cyber Oracle Platform">
+  <meta name="twitter:description" content="A premium constellation of tools, questions, and realities.">
+  <meta name="twitter:image" content="https://darlingx.com/icon180.png">
+
+  <!-- 🔹 PWA Manifest & Icons -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon180.png">
+
+  <!-- 🔹 Theme Color -->
+  <meta name="theme-color" content="#000000">
+
+  <!-- Font -->
+  <link rel="stylesheet" href="css/fonts.css">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/constellation.css">
+
+  <!-- 🔔 Web Push (optional integration with Firebase or custom push server) -->
+  <script>
+    if ('Notification' in window && navigator.serviceWorker) {
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          console.log("🔔 Push notifications allowed");
+          // TODO: integrate with push API or Firebase
+        }
+      });
+    }
+  </script>
+
+  <!-- 🌐 Offline Indicator (Visible Banner) -->
+  <style>
+    #netStatus {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      background: #000;
+      color: #0f0;
+      padding: 6px 12px;
+      font-family: 'VT323', monospace;
+      font-size: 14px;
+      border: 1px solid #0f0;
+      border-radius: 6px;
+      z-index: 9999;
+    }
+    #netStatus.offline { background: #300; color: #f55; border-color: #f55; }
+    
+    /* Offline page specific styles */
+    .offline-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+      z-index: 10;
+      position: relative;
+    }
+    
+    .offline-title {
+      font-size: 3.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    
+    .offline-message {
+      font-size: 1.5rem;
+      color: var(--text-color);
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+    
+    .offline-icon {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      animation: pulse 2s infinite;
+    }
+    
+    .retry-button {
+      background-color: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      font-family: 'VT323', monospace;
+    }
+    
+    .retry-button:hover {
+      background-color: var(--primary-color);
+      color: var(--bg-color);
+    }
+    
+    .cached-content {
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255, 215, 0, 0.3);
+      padding-top: 2rem;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    .cached-title {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .cached-list {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+    
+    .cached-list li {
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      border-left: 3px solid var(--primary-color);
+      padding-left: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .cached-list li:hover {
+      background-color: rgba(255, 215, 0, 0.1);
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      const netStatus = document.createElement('div');
+      netStatus.id = 'netStatus';
+      document.body.appendChild(netStatus);
+      function updateOnlineStatus() {
+        const online = navigator.onLine;
+        netStatus.textContent = online ? '🟢 Online' : '🔴 Offline';
+        netStatus.classList.toggle('offline', !online);
+      }
+      window.addEventListener("online", updateOnlineStatus);
+      window.addEventListener("offline", updateOnlineStatus);
+      updateOnlineStatus();
+    });
+  </script>
+
+  <!-- 🧪 Offline Analytics Logging (localStorage) -->
+  <script>
+    if (!navigator.onLine) {
+      const timestamp = new Date().toISOString();
+      localStorage.setItem(`offline-access-${timestamp}`, location.href);
+    }
+  </script>
+
+  <title>DarlingX - Offline Mode</title>
+</head>
+<body>
+  <!-- Constellation background -->
+  <div id="universe-container"></div>
+  
+  <!-- Main content -->
+  <div class="offline-container">
+      <div class="offline-icon">⚠️</div>
+      <h1 class="offline-title">You're Offline</h1>
+      <p class="offline-message">It seems you've lost connection to the network. Don't worry, some content is still available in offline mode.</p>
+      
+      <button class="retry-button" id="retryButton">
+          Try to Reconnect
+      </button>
+      
+      <div class="cached-content">
+          <h2 class="cached-title">Available Offline Content</h2>
+          <ul class="cached-list" id="cached-pages">
+              <!-- This will be populated by JavaScript -->
+          <li><a href="/index.html" style="color: var(--text-color); text-decoration: none;">Home Page</a></li><li><a href="/offline.html" style="color: var(--text-color); text-decoration: none;">Offline Page</a></li></ul>
+      </div>
+  </div>
+ 
+  <!-- Scripts -->
+  <script src="js/constellation.js"></script>
+  <script>
+      // Display cached pages if available
+      document.addEventListener('DOMContentLoaded', () => {
+          const cachedList = document.getElementById('cached-pages');
+          const pages = [
+              { url: '/index.html', title: 'Home Page' },
+              { url: '/offline.html', title: 'Offline Page' }
+          ];
+          
+          // Add cached pages to the list
+          pages.forEach(page => {
+              const li = document.createElement('li');
+              const a = document.createElement('a');
+              a.href = page.url;
+              a.textContent = page.title;
+              a.style.color = 'var(--text-color)';
+              a.style.textDecoration = 'none';
+              li.appendChild(a);
+              cachedList.appendChild(li);
+          });
+          
+          // Check for connection status changes
+          window.addEventListener('online', () => {
+              setTimeout(() => {
+                  window.location.href = '/index.html';
+              }, 1500); // Redirect after 1.5 seconds when connection is restored
+          });
+          
+          // Add event listener for retry button
+          document.getElementById('retryButton').addEventListener('click', () => {
+              window.location.reload();
+          });
+      });
+  </script>
+
+ 
+
+<div id="netStatus">🟢 Online</div></body><chatgpt-sidebar data-gpts-theme="light"></chatgpt-sidebar></html>
+<!-- ✅ Service Worker Registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/js/service-worker.js')
+        .then(registration => {
+          console.log('✅ Service Worker registered with scope:', registration.scope);
+        })
+        .catch(error => {
+          console.error('❌ Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>

@@ -1,0 +1,204 @@
+/**
+ * subdomain.css
+ * Premium styles for subdomain landing page
+ */
+
+/* Enhanced container styling */
+.redirect-container {
+  position: relative;
+  text-align: center;
+  z-index: 10;
+  background: rgba(0,0,0,0.7);
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.2),
+    0 0 40px rgba(255, 215, 0, 0.1),
+    inset 0 0 5px rgba(255, 215, 0, 0.1);
+  backdrop-filter: blur(5px);
+  max-width: 90%;
+  width: 450px;
+  transform: translateY(0);
+  animation: float 6s ease-in-out infinite;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Floating animation for container */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Premium heading style */
+.premium-heading {
+  font-size: 2.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  text-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.5),
+    0 0 20px rgba(255, 215, 0, 0.3);
+  letter-spacing: 2px;
+  font-weight: normal;
+  position: relative;
+  display: inline-block;
+}
+
+/* Animated border for heading */
+.premium-heading::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    var(--primary-color) 50%,
+    transparent 100%
+  );
+  animation: borderPulse 3s infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% { opacity: 0.5; width: 70%; left: 15%; }
+  50% { opacity: 1; width: 100%; left: 0; }
+}
+
+/* Enhanced text styling */
+.premium-text {
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Cyberpunk domain name styling */
+.domain-name {
+  display: inline-block;
+  color: var(--primary-color);
+  font-weight: bold;
+  position: relative;
+  padding: 0 5px;
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 5px var(--primary-color); }
+  50% { text-shadow: 0 0 15px var(--primary-color), 0 0 20px var(--primary-color); }
+}
+
+/* Enhanced countdown styling */
+.countdown-container {
+  margin-top: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.countdown {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  animation: pulse 1s infinite;
+}
+
+/* Enhanced pulse animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+/* Enhanced glitch effect */
+.cyber-glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.cyber-glitch::before,
+.cyber-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.cyber-glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 rgba(255, 0, 0, 0.7);
+  animation: glitch-animation 2s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.cyber-glitch::after {
+  left: -2px;
+  text-shadow: 2px 0 rgba(0, 255, 255, 0.7);
+  animation: glitch-animation 3s infinite linear alternate-reverse;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+/* Enhanced link styling */
+.premium-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.premium-link:hover {
+  text-shadow: 0 0 8px var(--primary-color);
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.premium-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    var(--primary-color) 50%,
+    transparent 100%
+  );
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.premium-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .redirect-container {
+    padding: 2rem;
+    width: 90%;
+  }
+  
+  .premium-heading {
+    font-size: 2.4rem;
+  }
+  
+  .premium-text {
+    font-size: 1.4rem;
+  }
+}

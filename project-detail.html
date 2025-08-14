@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project Details - Suleymanov Bobur">
+    <meta property="og:title" content="Project Details">
+    <meta property="og:description" content="Project Details - Suleymanov Bobur">
+    <meta property="og:url" content="https://www.darlingx.com/project-detail">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="icon32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon180.png">
+    <title>Project Details | Suleymanov Bobur</title>
+    
+      <link rel="stylesheet" href="css/fonts.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/projects.css">
+    
+    <style>
+        :root {
+            --primary-color: #FFD700;
+            --bg-color: #000;
+            --text-color: #fff;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        #universe-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.9;
+            min-height: 100vh;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .project-detail-container {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #FFD700;
+            text-decoration: none;
+            font-family: 'VT323', monospace;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .project-title {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-date {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .dg.ac {
+            position: fixed !important;
+            bottom: 10px !important;
+            right: 10px !important;
+            z-index: 9999 !important;
+            opacity: 0.3;
+            transition: opacity 0.5s ease-in-out;
+            max-height: 80vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            transform: translateZ(0);
+            will-change: transform;
+            pointer-events: auto;
+            display: none;
+        }
+        
+        .dg.ac.visible {
+            display: block;
+        }
+        
+        .dg.main {
+            position: static !important;
+            margin: 0 !important;
+            top: auto !important;
+            right: auto !important;
+            left: auto !important;
+            bottom: auto !important;
+            max-height: 100% !important;
+            overflow: visible !important;
+            transform: translateZ(0) !important;
+            will-change: transform !important;
+            pointer-events: auto !important;
+            background: none !important;
+            box-shadow: none !important;
+            border: none !important;
+            backdrop-filter: blur(0px) !important;
+        }
+
+        .gui-toggle-btn {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            padding: 5px 10px;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+
+        .gui-toggle-btn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="universe-container"></div>
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <main>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="nav-link">
+                    <span class="animate_letters">[darlingx.com]</span>
+                </a>
+                <a href="cv.html" class="nav-link">
+                    <span class="animate_letters">[cv]</span>
+                </a>
+                <a href="books.html" class="nav-link">
+                    <span class="animate_letters">[books]</span>
+                </a>
+                <a href="posts.html" class="nav-link">
+                    <span class="animate_letters">[posts]</span>
+                </a>
+                <a href="lists.html" class="nav-link">
+                    <span class="animate_letters">[lists]</span>
+                </a>
+                <a href="projects.html" class="nav-link">
+                    <span class="animate_letters">[projects]</span>
+                </a>
+            </nav>
+            
+            <div class="about">
+                <a href="projects.html" class="back-link">← Back to Projects</a>
+                
+                <div class="project-detail-container">
+                    <h1 class="project-title" id="project-title"></h1>
+                    <div class="project-date" id="project-date"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+            <script src="js/three.min.js"></script>
+  
+    <script src="js/matrix-animation.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/constellation.js"></script>
+    <script src="js/resource-loader.js"></script>
+    <script src="js/page-transition.js"></script>
+    
+    <!-- Script to load project details -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const code = new URLSearchParams(window.location.search).get('code');
+          if (code) {
+            try {
+              const decoded = JSON.parse(atob(code));
+              document.getElementById('project-title').textContent = decoded.title;
+              document.getElementById('project-date').textContent = decoded.date;
+              document.title = decoded.title + " | Suleymanov Bobur";
+            } catch (err) {
+              document.getElementById('project-title').textContent = 'Access Denied';
+              document.getElementById('project-date').textContent = '';
+            }
+          }
+        });
+      </script>
+      
+    
+    
+    <script defer src="js/main.js"></script>
+</body>
+</html>

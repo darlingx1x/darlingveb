@@ -1,0 +1,181 @@
+/* 
+ * posts.css - Simplified version
+ */
+
+/* Posts grid */
+.posts-grid {
+    margin-top: 2.5rem;
+    width: 100%;
+}
+
+.post-card {
+    display: block;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateX(5px);
+}
+
+.post-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Large title for posts */
+.post-title {
+    font-family: 'VT323', monospace;
+    font-size: 2.5rem !important;
+    color: #FFD700;
+    margin: 0 0 0.7rem 0;
+    padding: 0;
+    font-weight: normal;
+    line-height: 1.1;
+    display: block;
+}
+
+/* Date on separate line */
+.post-date {
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem !important;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+/* Article pages */
+.article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem; /* Базовые отступы по бокам */
+}
+
+.article-header {
+    margin-bottom: 2.5rem;
+}
+
+.article-title {
+    font-family: 'VT323', monospace;
+    font-size: 2.5rem !important;
+    color: #FFD700;
+    margin: 1rem 0 0.7rem 0;
+    font-weight: normal;
+    line-height: 1.1;
+}
+
+.article-date {
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem !important;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+}
+
+.article-content {
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    width: 100%;
+    overflow-wrap: break-word; /* Предотвращает выход текста за границы */
+    word-wrap: break-word;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.article-content ol {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.article-content li {
+    margin-bottom: 0.75rem;
+}
+
+.border-slate-500 {
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+.post-navigation {
+    margin: 3rem 0 1rem 0;
+}
+
+/* Animation */
+.post-card {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title, .article-title {
+        font-size: 2rem !important;
+    }
+    
+    .post-date, .article-date {
+        font-size: 1.4rem !important;
+    }
+    
+    .article-container {
+        padding: 0 1.25rem; /* Увеличенные отступы для планшетов */
+    }
+    
+    .article-content {
+        padding: 0; /* Сбрасываем любые внутренние отступы */
+    }
+    
+    .article-content p, 
+    .article-content ol,
+    .article-content ul {
+        max-width: 100%; /* Ограничиваем ширину контента */
+    }
+}
+
+/* Более узкие экраны (телефоны) */
+@media (max-width: 480px) {
+    .article-container {
+        padding: 0 1.5rem; /* Ещё больше отступов для мобильных */
+    }
+    
+    .article-content p {
+        font-size: 1.1rem; /* Уменьшаем размер текста для мобильных */
+    }
+    
+    .article-content ol {
+        padding-left: 1.25rem; /* Уменьшаем отступ списка */
+    }
+}
+
+/* Очень узкие экраны */
+@media (max-width: 320px) {
+    .article-container {
+        padding: 0 1rem; /* Адаптируем отступы */
+    }
+    
+    .post-title, .article-title {
+        font-size: 1.75rem !important; /* Уменьшаем заголовок */
+    }
+    
+    .post-date, .article-date {
+        font-size: 1.2rem !important; /* Уменьшаем дату */
+    }
+}

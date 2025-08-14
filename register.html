@@ -1,0 +1,60 @@
+<!-- register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | DarlingX</title>
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      background-color: #000;
+      color: #FFD700;
+      font-family: 'VT323', monospace;
+      text-align: center;
+      padding: 2rem;
+    }
+    .form-container {
+      max-width: 400px;
+      margin: 5rem auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 10px;
+      border: 1px solid #FFD700;
+    }
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      background: #111;
+      border: 1px solid #FFD700;
+      color: #fff;
+      font-size: 1.1rem;
+    }
+    button {
+      padding: 0.8rem 2rem;
+      background: transparent;
+      color: #FFD700;
+      border: 2px solid #FFD700;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    button:hover {
+      background: #FFD700;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>🧬 Register</h1>
+    <form action="/api/register.php" method="POST">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Create Account</button>
+    </form>
+    <p style="margin-top: 1rem;">Already registered? <a href="/admin/log.html" style="color: #0ff;">Login</a></p>
+  </div>
+</body>
+</html>
