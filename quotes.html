@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- CSP Meta tag to allow Telegram widget -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org https://oauth.telegram.org; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://telegram.org https://oauth.telegram.org; frame-src https://oauth.telegram.org; child-src https://oauth.telegram.org;">
   
   <meta name="description" content="Quotes - Suleymanov Bobur">
   <meta property="og:title" content="Quotes">
@@ -293,52 +291,14 @@
       }, 1000);
     });
 
-    // Method 1: Try to load real Telegram widget
+    // Method 1: Skip external script due to CSP, use alternative directly
     function initTelegramWidget() {
-      updateStatus('Loading Telegram widget...', 'warning');
+      updateStatus('CSP blocking external scripts, using alternative method...', 'warning');
       
-      const widgetContainer = document.getElementById('tg-widget');
-      if (!widgetContainer) {
-        updateStatus('Error: Widget container not found', 'error');
-        return;
-      }
-      
-      try {
-        // Create script element with nonce for CSP
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://telegram.org/js/telegram-widget.js?22';
-        script.setAttribute('data-telegram-login', 'darlinxloginbot');
-        script.setAttribute('data-size', 'large');
-        script.setAttribute('data-onauth', 'onTelegramAuth(user)');
-        script.setAttribute('data-request-access', 'write');
-        script.crossOrigin = 'anonymous';
-        
-        script.onload = function() {
-          updateStatus('Telegram widget loaded successfully!', 'success');
-        };
-        
-        script.onerror = function() {
-          updateStatus('Widget failed to load, using alternative', 'error');
-          initAlternativeWidget();
-        };
-        
-        // Try adding to head first, then to widget container
-        document.head.appendChild(script);
-        updateStatus('Script element added to head, waiting for load...', 'warning');
-        
-        // Timeout fallback
-        setTimeout(() => {
-          if (!window.TelegramLoginWidget) {
-            updateStatus('Widget timeout, using alternative', 'warning');
-            initAlternativeWidget();
-          }
-        }, 5000);
-        
-      } catch (error) {
-        updateStatus('Error creating widget: ' + error.message, 'error');
+      // Skip external script loading due to CSP restrictions
+      setTimeout(() => {
         initAlternativeWidget();
-      }
+      }, 500);
     }
 
     // Method 2: Alternative widget with direct link

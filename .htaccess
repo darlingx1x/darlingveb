@@ -86,8 +86,10 @@ AddType font/woff2 .woff2
     Header always set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "SAMEORIGIN"
     
-    # CSP для Telegram виджета
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org https://oauth.telegram.org; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://telegram.org https://oauth.telegram.org; frame-src https://oauth.telegram.org; child-src https://oauth.telegram.org;"
+    # CSP для Telegram виджета - только для quotes страницы
+    <FilesMatch "quotes\.html$">
+        Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org https://oauth.telegram.org; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://telegram.org https://oauth.telegram.org; frame-src https://oauth.telegram.org; child-src https://oauth.telegram.org;"
+    </FilesMatch>
 </IfModule>
 
 # ─────────────────────────────
