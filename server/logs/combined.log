@@ -873,3 +873,119 @@
 2025-08-15 00:42:06 [INFO]: ::1 - - [14/Aug/2025:19:42:06 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
 2025-08-15 00:42:46 [INFO]: ::1 - - [14/Aug/2025:19:42:46 +0000] "GET /public/test-telegram.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
 2025-08-15 00:42:48 [INFO]: ::1 - - [14/Aug/2025:19:42:48 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:41 [INFO]: 🚀 Инициализация DarlingX Server...
+2025-08-27 13:32:41 [INFO]: 🔍 Проверка подключения к GitHub базе данных...
+2025-08-27 13:32:41 [WARN]: ⚠️ GitHub токен не настроен, используем локальный режим
+2025-08-27 13:32:41 [INFO]: 🔄 Инициализация базы данных...
+2025-08-27 13:32:41 [WARN]: GitHub токен не настроен, используем локальную структуру данных
+2025-08-27 13:32:41 [INFO]: 📝 База данных пустая, создаем начальные данные...
+2025-08-27 13:32:41 [WARN]: GitHub токен не настроен, данные сохраняются только в кэше
+2025-08-27 13:32:41 [INFO]: ✅ Инициализация завершена, запуск сервера...
+2025-08-27 13:32:41 [INFO]: 🚀 DarlingX Server запущен на порту 3000
+2025-08-27 13:32:41 [INFO]: 📁 Статические файлы: D:\project\darlingveb\
+2025-08-27 13:32:41 [INFO]: 🔗 API доступен по адресу: http://localhost:3000/api
+2025-08-27 13:32:41 [INFO]: 🌐 Сайт доступен по адресу: http://localhost:3000
+2025-08-27 13:32:52 [INFO]: ::1 - - [27/Aug/2025:08:32:52 +0000] "GET /service-worker.js HTTP/1.1" 200 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:52 [INFO]: ::1 - - [27/Aug/2025:08:32:52 +0000] "GET /index.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:52 [INFO]: ::1 - - [27/Aug/2025:08:32:52 +0000] "GET /404.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:52 [INFO]: ::1 - - [27/Aug/2025:08:32:52 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:52 [INFO]: ::1 - - [27/Aug/2025:08:32:52 +0000] "GET /books.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /book-details.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /cv.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /lists.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /my-time.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /offline.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /open-questions.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /posts.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /project-detail.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /projects.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /quotes.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /register.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /css/time.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /css/books.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /css/style.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /css/projects.css HTTP/1.1" 200 833 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /css/posts.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /css/simple-posts.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /css/subdomain.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /js/time.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /js/matrix-animation.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /js/main.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /js/page-transition.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /js/books.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /icon32.png HTTP/1.1" 200 2181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /js/cyber-oracle.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /js/resource-loader.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /icon180.png HTTP/1.1" 200 4931 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /css/fonts.css HTTP/1.1" 200 343 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /darling.webp HTTP/1.1" 200 70872 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:32:53 [INFO]: ::1 - - [27/Aug/2025:08:32:53 +0000] "GET /fonts/VT323-Regular.woff2 HTTP/1.1" 200 17668 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:33:22 [INFO]: ::1 - - [27/Aug/2025:08:33:22 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:56:41 [INFO]: ::1 - - [27/Aug/2025:08:56:41 +0000] "GET /fonts/VT323-Regular.woff2 HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:56:42 [INFO]: ::1 - - [27/Aug/2025:08:56:42 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:56:45 [INFO]: ::1 - - [27/Aug/2025:08:56:45 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:56:55 [INFO]: SIGINT получен, завершение работы сервера...
+2025-08-27 13:56:57 [INFO]: 🚀 Инициализация DarlingX Server...
+2025-08-27 13:56:57 [INFO]: 🔍 Проверка подключения к GitHub базе данных...
+2025-08-27 13:56:57 [WARN]: ⚠️ GitHub токен не настроен, используем локальный режим
+2025-08-27 13:56:57 [INFO]: 🔄 Инициализация базы данных...
+2025-08-27 13:56:57 [WARN]: GitHub токен не настроен, используем локальную структуру данных
+2025-08-27 13:56:57 [INFO]: 📝 База данных пустая, создаем начальные данные...
+2025-08-27 13:56:57 [WARN]: GitHub токен не настроен, данные сохраняются только в кэше
+2025-08-27 13:56:57 [INFO]: ✅ Инициализация завершена, запуск сервера...
+2025-08-27 13:56:57 [INFO]: 🚀 DarlingX Server запущен на порту 3000
+2025-08-27 13:56:57 [INFO]: 📁 Статические файлы: D:\project\darlingveb\
+2025-08-27 13:56:57 [INFO]: 🔗 API доступен по адресу: http://localhost:3000/api
+2025-08-27 13:56:57 [INFO]: 🌐 Сайт доступен по адресу: http://localhost:3000
+2025-08-27 13:57:02 [INFO]: ::1 - - [27/Aug/2025:08:57:02 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:57:05 [INFO]: ::1 - - [27/Aug/2025:08:57:05 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/cv.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/css/fonts.css HTTP/1.1" 200 343 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/css/style.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/darling.webp HTTP/1.1" 200 70872 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/css/books.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/js/matrix-animation.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/js/gsap.min.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/fonts/VT323-Regular.woff2 HTTP/1.1" 200 17668 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/js/main.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/js/constellation.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/js/page-transition.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/js/three.min.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:02 [INFO]: ::1 - - [27/Aug/2025:08:58:02 +0000] "GET /public/js/resource-loader.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:04 [INFO]: ::1 - - [27/Aug/2025:08:58:04 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:06 [INFO]: ::1 - - [27/Aug/2025:08:58:06 +0000] "GET /public/books.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:08 [INFO]: ::1 - - [27/Aug/2025:08:58:08 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 13:58:10 [INFO]: ::1 - - [27/Aug/2025:08:58:10 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:15 [INFO]: SIGINT получен, завершение работы сервера...
+2025-08-27 14:24:17 [INFO]: 🚀 Инициализация DarlingX Server...
+2025-08-27 14:24:17 [INFO]: 🔍 Проверка подключения к GitHub базе данных...
+2025-08-27 14:24:17 [WARN]: ⚠️ GitHub токен не настроен, используем локальный режим
+2025-08-27 14:24:17 [INFO]: 🔄 Инициализация базы данных...
+2025-08-27 14:24:17 [WARN]: GitHub токен не настроен, используем локальную структуру данных
+2025-08-27 14:24:17 [INFO]: 📝 База данных пустая, создаем начальные данные...
+2025-08-27 14:24:17 [WARN]: GitHub токен не настроен, данные сохраняются только в кэше
+2025-08-27 14:24:17 [INFO]: ✅ Инициализация завершена, запуск сервера...
+2025-08-27 14:24:18 [INFO]: 🚀 DarlingX Server запущен на порту 3000
+2025-08-27 14:24:18 [INFO]: 📁 Статические файлы: D:\project\darlingveb\
+2025-08-27 14:24:18 [INFO]: 🔗 API доступен по адресу: http://localhost:3000/api
+2025-08-27 14:24:18 [INFO]: 🌐 Сайт доступен по адресу: http://localhost:3000
+2025-08-27 14:24:26 [INFO]: ::1 - - [27/Aug/2025:09:24:26 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:30 [INFO]: ::1 - - [27/Aug/2025:09:24:30 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:32 [INFO]: ::1 - - [27/Aug/2025:09:24:32 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /cv.html HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /css/fonts.css HTTP/1.1" 200 343 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /css/style.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /js/matrix-animation.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /css/cv.css HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /js/constellation.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /js/cv.js HTTP/1.1" 200 525 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /js/page-transition.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /js/main.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /js/three.min.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /fonts/VT323-Regular.woff2 HTTP/1.1" 200 17668 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /js/resource-loader.js HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:24:38 [INFO]: ::1 - - [27/Aug/2025:09:24:38 +0000] "GET /icon32.png HTTP/1.1" 200 2181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:25:33 [INFO]: ::1 - - [27/Aug/2025:09:25:33 +0000] "GET /posts HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:25:34 [INFO]: ::1 - - [27/Aug/2025:09:25:34 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:25:38 [INFO]: ::1 - - [27/Aug/2025:09:25:38 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-08-27 14:25:40 [INFO]: ::1 - - [27/Aug/2025:09:25:40 +0000] "GET /service-worker.js HTTP/1.1" 304 - "http://localhost:3000/service-worker.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"

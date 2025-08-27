@@ -179,6 +179,11 @@ app.get('/', (_req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Serve CV page from project root so live edits reflect in dev
+app.get('/cv', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'cv.html'));
+});
+
 // error handler
 app.use((err, _req, res, _next) => {
   const status = err.status || 500;
