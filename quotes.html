@@ -350,16 +350,17 @@
       }
       
       widgetContainer.innerHTML = `
-        <a href="https://oauth.telegram.org/auth?bot_id=8089091309&request_access=write&origin=${encodeURIComponent(window.location.origin)}" 
+        <a id="tg-login-link" href="https://oauth.telegram.org/auth?bot_id=8089091309&request_access=write&origin=${encodeURIComponent(window.location.origin)}" 
            class="telegram-button" 
-           target="_blank"
-           onclick="handleTelegramLogin(event)">
+           target="_blank">
           🔐 Login with Telegram
         </a>
         <p style="font-size: 0.8rem; margin-top: 8px; color: rgba(255,255,255,0.6); text-align: center;">
           Opens in new tab
         </p>
       `;
+      const tgLink = document.getElementById('tg-login-link');
+      if (tgLink) tgLink.addEventListener('click', handleTelegramLogin);
       
       updateStatus('Alternative login method ready', 'success');
     }
@@ -375,13 +376,15 @@
       }
       
       widgetContainer.innerHTML = `
-        <button class="telegram-button" onclick="testTelegramAuth()">
+        <button id="tg-login-test" class="telegram-button">
           🔐 Login with Telegram (Test)
         </button>
         <p style="font-size: 0.8rem; margin-top: 8px; color: rgba(255,255,255,0.6); text-align: center;">
           Test mode - no real authentication
         </p>
       `;
+      const tgTestBtn = document.getElementById('tg-login-test');
+      if (tgTestBtn) tgTestBtn.addEventListener('click', testTelegramAuth);
       
       updateStatus('Test login button ready', 'success');
     }
@@ -425,11 +428,13 @@
             <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
               @${user.username || 'user'}
             </div>
-            <button class="telegram-button" onclick="logout()" style="margin-top: 15px; background: #f44336;">
+            <button id="tg-logout" class="telegram-button" style="margin-top: 15px; background: #f44336;">
               Logout
             </button>
           </div>
         `;
+        const logoutBtn = document.getElementById('tg-logout');
+        if (logoutBtn) logoutBtn.addEventListener('click', logout);
       }
       
       // Show demo message
