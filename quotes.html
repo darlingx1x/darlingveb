@@ -304,7 +304,7 @@
       }
       
       try {
-        // Create script element
+        // Create script element with nonce for CSP
         const script = document.createElement('script');
         script.async = true;
         script.src = 'https://telegram.org/js/telegram-widget.js?22';
@@ -312,6 +312,7 @@
         script.setAttribute('data-size', 'large');
         script.setAttribute('data-onauth', 'onTelegramAuth(user)');
         script.setAttribute('data-request-access', 'write');
+        script.crossOrigin = 'anonymous';
         
         script.onload = function() {
           updateStatus('Telegram widget loaded successfully!', 'success');
@@ -322,12 +323,13 @@
           initAlternativeWidget();
         };
         
-        widgetContainer.appendChild(script);
-        updateStatus('Script element added, waiting for load...', 'warning');
+        // Try adding to head first, then to widget container
+        document.head.appendChild(script);
+        updateStatus('Script element added to head, waiting for load...', 'warning');
         
         // Timeout fallback
         setTimeout(() => {
-          if (widgetContainer.children.length === 0) {
+          if (!window.TelegramLoginWidget) {
             updateStatus('Widget timeout, using alternative', 'warning');
             initAlternativeWidget();
           }
