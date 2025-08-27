@@ -241,14 +241,7 @@
       </div>
     </div>
 
-    <!-- 👤 Login/Register Fallback for non-logged-in -->
-    <div id="auth-container">
-      <input type="text" id="auth-username" placeholder="Login">
-      <input type="password" id="auth-password" placeholder="Password">
-      <button id="loginBtn1">Log In</button>
-      <button id="registerBtn1">Sign Up</button>
-      <p id="auth-message"></p>
-    </div>
+
   </main>
 
   <!-- Telegram Login Widget -->
@@ -272,104 +265,9 @@
   <script src="js/quotes-custom.js"></script>
   <script defer src="js/main.js"></script>
 
-  <!-- ✅ Logged-in user bar -->
-  <script>
-    fetch('/api/user.php')
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.logged_in) {
-          const userBar = document.createElement('div');
-          userBar.innerHTML = `👤 ${data.email} <a href="/api/logout.php" style="color:red;margin-left:10px;">[Logout]</a>`;
-          userBar.style.position = 'fixed';
-          userBar.style.top = '10px';
-          userBar.style.right = '20px';
-          userBar.style.color = '#FFD700';
-          userBar.style.fontFamily = 'VT323, monospace';
-          document.body.appendChild(userBar);
-        }
-      });
-  </script>
 
-  <!-- 🧾 Modal Auth Box -->
-  <div id="authModal" class="modal-auth">
-    <div class="modal-content">
-      <h2>👤 Authentication</h2>
-      <input type="email" id="authEmail" placeholder="Email" />
-      <input type="password" id="authPassword" placeholder="Password" />
-      <div class="modal-buttons">
-        <button id="loginBtn2">Log In</button>
-        <button id="registerBtn2">Sign Up</button>
-      </div>
-      <p class="auth-message" id="authMessage"></p>
-    </div>
-  </div>
 
-  <!-- 🔁 Login/Register Script -->
-  <script>
-    function closeModal() {
-      document.getElementById('authModal').classList.remove('active');
-    }
 
-    function login() {
-      const email = document.getElementById('authEmail').value.trim();
-      const password = document.getElementById('authPassword').value.trim();
-      const msg = document.getElementById('authMessage');
-
-      fetch('/admin/login.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          msg.textContent = '✅ Logged in';
-          closeModal();
-          location.reload();
-        } else {
-          msg.textContent = data.message || '❌ Login failed';
-        }
-      })
-      .catch(err => {
-        msg.textContent = 'Server error: ' + err.message;
-      });
-    }
-
-    function register() {
-      const email = document.getElementById('authEmail').value.trim();
-      const password = document.getElementById('authPassword').value.trim();
-      const msg = document.getElementById('authMessage');
-
-      fetch('/admin/register.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          msg.textContent = '✅ Registered. Redirecting...';
-          setTimeout(() => location.href = '/quotes.html', 1000);
-        } else {
-          msg.textContent = data.message || '❌ Registration failed';
-        }
-      })
-      .catch(err => {
-        msg.textContent = 'Server error: ' + err.message;
-      });
-    }
-
-    // Add event listeners for buttons
-    document.addEventListener('DOMContentLoaded', function() {
-      // Login buttons
-      document.getElementById('loginBtn1')?.addEventListener('click', login);
-      document.getElementById('loginBtn2')?.addEventListener('click', login);
-      
-      // Register buttons
-      document.getElementById('registerBtn1')?.addEventListener('click', register);
-      document.getElementById('registerBtn2')?.addEventListener('click', register);
-    });
-  </script>
 
   <!-- Telegram Widget Script -->
   <script>
